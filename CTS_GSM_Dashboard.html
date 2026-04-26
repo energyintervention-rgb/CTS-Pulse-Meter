@@ -1,0 +1,1984 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>CTS GSM Energy Dashboard</title>
+<link rel="icon" type="image/png" href="data:image/png;base64,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">
+<link rel="apple-touch-icon" href="data:image/png;base64,/9j/4AAQSkZJRgABAQAAAQABAAD/4gHYSUNDX1BST0ZJTEUAAQEAAAHIAAAAAAQwAABtbnRyUkdCIFhZWiAH4AABAAEAAAAAAABhY3NwAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAQAA9tYAAQAAAADTLQAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAlkZXNjAAAA8AAAACRyWFlaAAABFAAAABRnWFlaAAABKAAAABRiWFlaAAABPAAAABR3dHB0AAABUAAAABRyVFJDAAABZAAAAChnVFJDAAABZAAAAChiVFJDAAABZAAAAChjcHJ0AAABjAAAADxtbHVjAAAAAAAAAAEAAAAMZW5VUwAAAAgAAAAcAHMAUgBHAEJYWVogAAAAAAAAb6IAADj1AAADkFhZWiAAAAAAAABimQAAt4UAABjaWFlaIAAAAAAAACSgAAAPhAAAts9YWVogAAAAAAAA9tYAAQAAAADTLXBhcmEAAAAAAAQAAAACZmYAAPKnAAANWQAAE9AAAApbAAAAAAAAAABtbHVjAAAAAAAAAAEAAAAMZW5VUwAAACAAAAAcAEcAbwBvAGcAbABlACAASQBuAGMALgAgADIAMAAxADb/2wBDAAUDBAQEAwUEBAQFBQUGBwwIBwcHBw8LCwkMEQ8SEhEPERETFhwXExQaFRERGCEYGh0dHx8fExciJCIeJBweHx7/2wBDAQUFBQcGBw4ICA4eFBEUHh4eHh4eHh4eHh4eHh4eHh4eHh4eHh4eHh4eHh4eHh4eHh4eHh4eHh4eHh4eHh4eHh7/wAARCAC0ALQDASIAAhEBAxEB/8QAHQABAAICAwEBAAAAAAAAAAAAAAYIBQcDBAkBAv/EAEgQAAEDAwEEBQYLBQUJAAAAAAEAAgMEBREGBxIhMQgTQVFxFCJhgZGhCRcjMjVXcpKVsdI3c3WzwRVS4fDxJDM4QmKCorTR/8QAGgEBAAMBAQEAAAAAAAAAAAAAAAIDBAEFBv/EACgRAAICAgICAQIHAQAAAAAAAAABAgMEERIhMUEyUWEFEyIzgbHwwf/aAAwDAQACEQMRAD8ApkiKR2G09Vu1VU35Tmxh/wCX0n0/l48raaZWy0iMpKK2zo2uzTVQEsxMMJAIPa4eju8fDms3S2iggHCESOxguk87Pq5e5d9F69WLXWvG2ZpWSZ8a1rWhrQGtAwABwAX1EWkgEREAREQBERAEREAREQBERAcNRS01RnroI3kjdyW8cePMLF1lgp3hzqZ7ondjXHLeXLv/ADWaRVTphP5I6pNeCC1VPNTS9VPGWPxnB7lxKc1lNFVwOhmblp5HtB7wohcqKWhn6uTi08WPA4OH+exeTkYrq7XaNMLOR1URFlLDK6eoBVVBmlaDDEeII4OPd/X2d6lS6FhgEFriGBvSDrHEHnnl7sLvr3MWpV1r6syWS3IIiLSQCIiAIiIAiIgCIiAIiIAiIgCIiAIiIAundqJtdSmPzRIOMbiOR/xXcRRlFSTiwnp7RAXNc1xa4FrgcEEcQUWQ1DAILpIQAGyDrAAe/n7wUXz9kOEnF+jantbJa1rWtDWgNaBgADgAvqIvojEEREAREQBERAEREAREQBERAEREAREQBERAEREBxS09PM7elgikcBjLmAnCLlRRcIv0NsIiKQCIiAIiIAiIgCIiAIiIAiIgCIiAIiIAiIgCIiAIiIAiIgCIiAIiIAilOldnOu9URNnsOlLrW07vmztgLYj4PdhvvUof0e9sLYusOjZd3uFdTE+wSZUHbBPTaO8W/Rq5FIdU6H1hpYb2odNXS2x5wJZqZwjJ9D8bp9qxljs14vtb5DY7TX3SqDC/qKOnfNJujm7daCccRx9KkpJrezmjoopX8Wm0f6v9V/g9R+hPi02j/V/qv8HqP0LnOP1GmRRFK/i02j/V/qv8HqP0J8Wm0f6v9V/g9R+hOcfqNMiiLPXrRWsrJQOr7zpK/W2ja4NdPV26WGME8AC5zQMlYFdTT8AIpXpLZvrvVcLajT+lbnW07vm1Ai3Ij4SOw0+1SZ/R72wsj3zo2UjGeFdTE+wSZUHbBPTaO8W/Rq5FL75sv2iWVjn3LRd8ijbxdI2jfIweLmgge1RF7XMcWPaWuBwQRggqakpeGca0fERF0BERAEREBnNM6e/tWOatrq+G1WuDIlrJhkF+6XCNjcgvfgZ3R2eoHl1BpuCktzLrZbvDereMNnljjMb6dxJA6yMkloOODjz9mcvHFPqXZ3bbVZpJpq60STSVVAMAyMe5zhK0Z8/d+bgAuy88sjP709S1eldN3utvvlFC250L6Ojo3jD6iR2RvlmctDO9w5P4cwD4k8uxTcufalrh12t6345ba/UmukvPtmV2S3vfe/H+7+5BY2PlkbHGxz3vIa1rRkknkAFdPo9dHm0aet1NqHW9DDcb7K0SR0czQ+Gi7QC3k+TvJyAeXLJ0p0ONJwal2vQ11ZEJKWyQGu3XDIMoIbGPUXbw+wr4LTm3tPhE9GqCfbOrc6+32i3SV1yrKagooG5kmnkbHHGPSTgBa8qNvuyGCqNM/WlMXg4zHSzvZ95rC33qpvSd2l3DXevqyggqniwWqd0FFA13mSOaS10xHaXHOO5uB351KuVYCcdzYldp9HpxprV2j9Y00jLFfbVeIyz5WGKZr3Bp/vMPEDxCq3sir9O6U6W+rnV9ba7FbIX18MRnljpoGfLN3WNyQ0cAcAdyrlbq2st1bFXW+rnpKqF29FNBIWPYe8OHEFfu8XGtu90qbpcqh1TWVUrpZ5nYy95OSTjtJV0MPhyW+mRdu9HpJ8Zezj6wNKfjFP8ArWX0/qTTuomzO0/frVd2wECY0NZHOIyc43twnGcHGe4ry6VtPg/fo/WP72j/ACmWa/DjXByTJwtcnotBV1FPR0k1XVzxU9PAx0kssrw1kbGjJc4ngAACSSoz8Zezj6wNKfjFP+tcu1n9lerf4HW/yHrzMUMbGVybbO2T4l1OlrrXRt72MV1BZtW2G5Vjqunc2CkuMU0hAeCSGtcTgLWXQ72UWzV9bWau1JSMq7XbphBS0sgzHPPgOcXjta0FvDkS7jywa8K93QrdAdhtKIcb4r6gTY/vbw5/9u6tNsHj0NRflkIvnPbNu3e5WqwWmSvulbSW230zRvyzPEccY5AZPAdgAWvZOkDsfZOYTrOEuBxltFUFv3hHj3rGdLTQupdd7PqSk0wzymooq0VMlH1gYZ27jm+aSQC4Zzg88ntwDSDUOl9SaelMd9sNztjgcf7VSvjB8CRg+pUY2NXbHcn2TnNxfSPRzS+0DRGp3tjsOqrTXTO5Qx1LRL9w4d7lSDpa/wDEHqfxpf8A1YVqsEgggkEcQQuaurKuvqXVVdVT1U7g1rpZpC95DQGtBJ48AAB6AFspxVTPkmVTs5LRwoiLWVhERAEREBy0dVU0VSypo6iamnZndkieWObkYOCOI4Ehfu4V9dcJhNX1lRVytbuh88rnuDck4yTy4n2rroo8I8uWuzmlvZaj4PyOM1OtJSB1jWUTW+BM+fyCtTdJJIrbVSxf7xkL3M8Q04VMugrqCG3bS7jYp5AwXeh+RyfnSxHeA+4ZD6ldUgEEEZB5hePmLVzZrq+J5TOJc4ucSSTkk9qKW7X9H1ehtod209UwuZFFO59I8jhLTuJMbh6uB7iCOxRJezFqS2jK1oIiLoCtp8H79H6x/e0f5TKpatp8H79H6x/e0f5TLLmfsv8A3snV8jf+1n9lerf4HW/yHrzMXpntZ/ZXq3+B1v8AIevMxU/h/wAWTu8oLefRT2w0ez241Vg1E57bBcZRKJ2tLvJZsBu+QOJa4AA4yRut9K0Yi22VqyPGRVFuL2j1Os90tt5t8VwtNfTV9HKMxz08okY7wI4LsyMZJG6ORjXscMOa4ZBHpC8u9P6hv2nqnymxXm4WuY830lQ+Inx3SM+tbT0l0ltqFkkjbXXCkvlM0gGOup2h2PQ9m67PpOV5s8CS+LL1cvZa3XmxLZvrCnkFZp2moKt4O7WW5gp5WnvO6N1x+0CqS7a9m902ZavdZa2UVVJMzrqGra3dE8eccR2OB4EeB5EK/wBs01XTa40LatVUlO+mjr4S8wvdkxva4se3PaA5pGeGVo3p9UcD9Facr3NHXw3J8LD27r4yXe+Nqji2zjZwkLIpx2inSIi9czhERAEREAREQHf07eLhp+/UN7tU5graGds8Dx2Oac8e8HkR2gkL0O2L7T7FtL01HXUEscFzhYBX0DnfKQP7SB2sJ5O9RwchecS7tiu90sV0hulmuFTb62E5jnp5Cx7fWOzvHIrNkY6uX3JwnxPRnansz0ptItjKTUVG8zQ58mrIHbk8Gee67BBH/SQR6MrR1R0PqF1SXU+vKmODPBklsa94H2hIB7lCdKdKzXtsgZBe7fa741ox1rmGCZ3iWeb/AOKlLumFOY8N2fxh/ebuSPZ1P9VjjVlV9R8fx/0tcq5ds2JoPozbO9OVUdbcmVeoqphBaK4gQA9/VNAB8HFwVRNt8ccO2HV0UMbY42XeoaxjRgNAkOAB2BbE1f0o9ot5hfT2mO22GJwxv00Rkmx9t5IHiGgrSNwrKu4V09dX1M1VVVEhkmmleXPkeTkucTxJJ7Vqx67YycrGVzlFrUTgVtPg/fo/WP72j/KZVLWw9j217Uuy6G5RafobRUtuLo3TeXRSPLSwOxu7j24+ec5z2KzIrdlbiiMGlLbL4bWf2V6t/gdb/IevMxbz1D0odf3zT9xstXaNMsp7hSy0sroqacPayRhaS0mYjOCcZBWjFXiUyqTUiVklJ9BXF6KWitKay2EupdTWKiuTBdKgMdKzEjPNj+a8Yc31EKnSmWz7ajrrQjDBpq/TU1I55e6kka2WFzjzO44EAnA4jB4KzIrlZDUXpkYSSfZZ7UnRM0VWyvlsl8u9pLjkRv3aiNvoAO672uKw9s6IFsjrGvuWuauppgfOjgt7YXkd28XvA+6orZOlxq6njay76as1eRzdA+SBzvHJcM+AWbd0wpurw3Z9GH95u5I9nU/1WPjlrpP+i3dZZ7S1itmmdPUVhs9OKegoohFDHnJA7yTzJOST2klVK6c2tqK7ajtej7dO2YWjfmrnMOQJngBrPFrQSft45gqPa56T20LUFJJRWptFp6nkBa59G1zp8Hs6xx4eLQD6VpCWR8sr5ZXufI9xc5zjkuJ5kntKnjYsoS5z8nJ2JrSPyiIvQKQiIgCIiAIiIAiIgCIiAIiIAiIgCIiAIiIAiIgCIiAIiIAiIgOGim8oo4pstJewE7vLPaPauZYXStSH0r6ZzvOjOWjh80/459oWaVVM+cFI7JaegiIrTgREQBERAEREAREQBERAEREAREQBERAERfHOa1pc4hrQMkk8AEBhr1dpqOsEMDYXDcBdvAkg8eHA92EWBr5zU1ks+Th7uGRg47PdhF4lmVY5vi+jVGta7R+aSeSmqGTxEb7DwyMhTSjqYquBs0LstPMdoPcVBl2rbWy0M/WR8Wng9hPBw/z2pi5H5T0/DFkORNUXTttwp65nyZ3ZAMujPMf/AFdxezGSktxZlaa6YREUgEREAREQBERAEREAREQBERAERfHOa1pc4hrQMkk8AEB9Ue1LcGuHkULgRn5U47RyGfz/ANUut8Dmuhos4I4y8j6cD+v+qwK8zLyk1wgX11+2ERF5peEREB9a5zXBzSWuByCDxBWQpbzXwDBkErQOAkGffz96IraZSjNaZGSTRKaSR01JDK4AOexrjjlkhcqIvfXgxhERdAREQBERAEREAREQBERAYW+3Opo6kQQiPDo97eIyQckeHYsDVVdTUn5ed7xnOCeGfDkiLx8ycuet9GmpLWzgREWItCIiA//Z">
+
+<script src="https://cdnjs.cloudflare.com/ajax/libs/Chart.js/4.4.1/chart.umd.js"></script>
+<style>
+/*═══════════════════════════════════════════════════════
+  DESIGN TOKENS — single source of truth
+  All colors, channel palette, signal quality palette
+  defined here and referenced everywhere else.
+═══════════════════════════════════════════════════════*/
+:root{
+  /* surface */
+  --bg:#16161b; --surface:#1f1f27; --surface2:#28282f; --surface3:#31313a;
+  --border:rgba(255,255,255,0.06); --border2:rgba(255,255,255,0.12);
+  /* text */
+  --text:#e6e4f0; --text2:#9e9cb6; --text3:#636178;
+  /* accent */
+  --blue:#4aa3f5; --blue2:#2d7dd2; --amber:#f0b429; --green:#2ecc8f;
+  --coral:#e8613a; --purple:#9b7fe8; --teal:#2ec4b6; --red:#e84a4a;
+  /* layout */
+  --radius:6px; --radius-lg:10px;
+
+  /*─── CHANNEL PALETTE ── edit once, applies everywhere ───*/
+  --ch1:#4aa3f5;  /* H01 blue   */
+  --ch2:#f0b429;  /* H02 amber  */
+  --ch3:#2ecc8f;  /* H03 green  */
+  --ch4:#9b7fe8;  /* H04 purple */
+
+  /*─── SIGNAL QUALITY PALETTE ── centralized ─────────────
+    Bands per V3 spec:
+      0       = no signal  → red/gray
+      1–49    = marginal   → amber
+      50–199  = good       → blue
+      200+    = strong     → green
+      65535   = invalid    → dim gray
+  ─────────────────────────────────────────────────────────*/
+  --sig-none-fg:#e84a4a;   --sig-none-bg:rgba(232,74,74,0.13);
+  --sig-marg-fg:#f0b429;   --sig-marg-bg:rgba(240,180,41,0.13);
+  --sig-good-fg:#4aa3f5;   --sig-good-bg:rgba(74,163,245,0.13);
+  --sig-str-fg:#2ecc8f;    --sig-str-bg:rgba(46,204,143,0.13);
+  --sig-inv-fg:#636178;    --sig-inv-bg:rgba(99,97,120,0.13);
+}
+
+*,*::before,*::after{box-sizing:border-box;margin:0;padding:0;}
+html{scroll-behavior:smooth;}
+body{
+  font-family:-apple-system,BlinkMacSystemFont,'Segoe UI',Roboto,sans-serif;
+  background:var(--bg); color:var(--text); font-size:13px;
+  line-height:1.5; min-height:100vh;
+}
+.container{max-width:1540px;margin:0 auto;padding:12px 16px;}
+
+/*───────────────────────────────────────────────────────
+  LOGIN OVERLAY
+───────────────────────────────────────────────────────*/
+#login-overlay{
+  position:fixed;inset:0;background:#0f0f14;
+  display:flex;align-items:center;justify-content:center;z-index:9999;
+}
+.lbox{
+  background:var(--surface);border:0.5px solid var(--border2);
+  border-radius:var(--radius-lg);padding:30px 32px;width:min(360px,90vw);
+}
+.lbox-logo{display:flex;align-items:center;gap:10px;margin-bottom:20px;}
+.lbox-icon{
+  width:34px;height:34px;border-radius:var(--radius);
+  background:rgba(74,163,245,0.14);display:flex;align-items:center;justify-content:center;
+}
+.lbox-icon svg{width:18px;height:18px;}
+.lbox-title{font-size:15px;font-weight:500;}
+.lbox-sub{font-size:11px;color:var(--text3);margin-bottom:18px;}
+.lbox-field{margin-bottom:11px;}
+.lbox-field label{display:block;font-size:10px;color:var(--text3);text-transform:uppercase;letter-spacing:.05em;margin-bottom:4px;}
+.lbox-field input{
+  width:100%;padding:7px 10px;font-size:12px;
+  border:0.5px solid var(--border2);border-radius:var(--radius);
+  background:var(--surface2);color:var(--text);outline:none;color-scheme:dark;
+}
+.lbox-field input:focus{border-color:var(--blue);box-shadow:0 0 0 2px rgba(74,163,245,.16);}
+.lbox-btn{
+  width:100%;padding:8px;font-size:13px;font-weight:500;
+  background:var(--blue2);color:#fff;border:none;border-radius:var(--radius);
+  cursor:pointer;margin-top:4px;transition:background .15s;
+}
+.lbox-btn:hover{background:#2168bb;}
+.lbox-err{font-size:11px;color:#f09575;margin-top:7px;display:none;}
+
+/*───────────────────────────────────────────────────────
+  HEADER
+───────────────────────────────────────────────────────*/
+.header{
+  display:flex;align-items:center;justify-content:space-between;
+  flex-wrap:wrap;gap:8px;
+  padding:10px 16px;border-bottom:0.5px solid var(--border2);
+  position:sticky;top:0;z-index:100;
+  background:var(--bg);
+  margin-bottom:0;
+}
+.hdr-left{display:flex;align-items:center;gap:8px;flex-wrap:wrap;}
+.hdr-title{font-size:15px;font-weight:500;}
+.dev-tag{background:rgba(74,163,245,.13);color:var(--blue);font-size:11px;font-weight:500;padding:2px 8px;border-radius:var(--radius);}
+.live-dot{width:6px;height:6px;border-radius:50%;background:var(--green);display:inline-block;margin-right:3px;flex-shrink:0;}
+.hdr-status{font-size:11px;color:var(--text3);display:flex;align-items:center;}
+.hdr-right{display:flex;align-items:center;gap:6px;flex-wrap:wrap;}
+.date-row{display:flex;align-items:center;gap:5px;font-size:11px;color:var(--text2);}
+.date-row input[type=date]{
+  font-size:11px;padding:4px 7px;
+  border:0.5px solid var(--border2);border-radius:var(--radius);
+  background:var(--surface2);color:var(--text);outline:none;cursor:pointer;color-scheme:dark;
+}
+.btn{
+  font-size:11px;padding:4px 12px;border:0.5px solid var(--border2);
+  border-radius:var(--radius);background:var(--surface2);color:var(--text);
+  cursor:pointer;transition:background .15s;white-space:nowrap;
+}
+.btn:hover{background:var(--surface3);}
+.btn-pri{background:var(--blue2);color:#fff;border-color:var(--blue2);}
+.btn-pri:hover{background:#2168bb;}
+.btn-out{background:rgba(232,97,58,.1);color:#f09575;border-color:rgba(232,97,58,.22);}
+.btn-out:hover{background:rgba(232,97,58,.18);}
+#dev-address{font-size:10px;color:var(--text3);max-width:220px;overflow:hidden;text-overflow:ellipsis;white-space:nowrap;}
+
+/*───────────────────────────────────────────────────────
+  KPI CARDS
+───────────────────────────────────────────────────────*/
+.kpi-grid{display:grid;grid-template-columns:190px repeat(4,1fr);gap:8px;margin-bottom:10px;align-items:stretch;}
+.kpi-ts{
+  background:var(--surface);border:0.5px solid var(--border2);
+  border-radius:var(--radius-lg);padding:11px 13px;
+  display:flex;flex-direction:column;justify-content:center;
+}
+.kpi-ts-val{font-size:12px;font-weight:500;line-height:1.4;}
+.kpi-ts-lbl{font-size:10px;color:var(--text3);margin-top:3px;}
+.kpi{background:var(--surface);border:0.5px solid var(--border2);border-radius:var(--radius-lg);padding:11px 13px;display:flex;flex-direction:column;justify-content:center;}
+.kpi-icon-card{display:flex;flex-direction:column;justify-content:center;}
+.kpi-lbl{font-size:9px;color:var(--text3);margin-bottom:3px;text-transform:uppercase;letter-spacing:.05em;}
+.kpi-val{font-size:18px;font-weight:500;line-height:1.2;}
+.kpi-unit{font-size:11px;color:var(--text2);font-weight:400;margin-left:2px;}
+.kpi-sub{font-size:10px;color:var(--text3);margin-top:2px;}
+
+/*───────────────────────────────────────────────────────
+  V3 DIAGNOSTIC BAR
+───────────────────────────────────────────────────────*/
+.diag-bar{display:grid;grid-template-columns:repeat(auto-fit,minmax(100px,1fr));gap:6px;margin-bottom:10px;}
+.diag-card{background:var(--surface2);border:0.5px solid var(--border);border-radius:var(--radius);padding:7px 10px;}
+.diag-lbl{font-size:8px;color:var(--text3);text-transform:uppercase;letter-spacing:.05em;margin-bottom:2px;}
+.diag-val{font-size:14px;font-weight:500;}
+.diag-sub{font-size:8px;color:var(--text3);margin-top:1px;line-height:1.3;}
+
+/*───────────────────────────────────────────────────────
+  SIGNAL QUALITY — reusable classes (table + diag + KPI)
+  Built from CSS variables so palette change = one edit
+───────────────────────────────────────────────────────*/
+.sig-none    {color:var(--sig-none-fg);}
+.sig-marginal{color:var(--sig-marg-fg);}
+.sig-good    {color:var(--sig-good-fg);}
+.sig-strong  {color:var(--sig-str-fg);}
+.sig-invalid {color:var(--sig-inv-fg);}
+
+.sig-badge{font-size:9px;padding:2px 6px;border-radius:3px;font-weight:500;white-space:nowrap;}
+.sig-badge.none    {background:var(--sig-none-bg);color:var(--sig-none-fg);}
+.sig-badge.marginal{background:var(--sig-marg-bg);color:var(--sig-marg-fg);}
+.sig-badge.good    {background:var(--sig-good-bg);color:var(--sig-good-fg);}
+.sig-badge.strong  {background:var(--sig-str-bg); color:var(--sig-str-fg);}
+.sig-badge.invalid {background:var(--sig-inv-bg); color:var(--sig-inv-fg);}
+
+/*───────────────────────────────────────────────────────
+  CHART CARDS
+───────────────────────────────────────────────────────*/
+.row2{display:grid;grid-template-columns:210px 255px 1fr;gap:8px;margin-bottom:8px;}
+.chart-card{background:var(--surface);border:0.5px solid var(--border2);border-radius:var(--radius-lg);padding:11px 13px;}
+.card-title{font-size:10px;color:var(--text2);font-weight:500;margin-bottom:7px;text-transform:uppercase;letter-spacing:.04em;}
+.chart-wrap{position:relative;width:100%;min-width:0;}
+.donut-wrap{position:relative;}
+.donut-ctr{position:absolute;top:50%;left:50%;transform:translate(-50%,-50%);text-align:center;pointer-events:none;}
+.dc-val{font-size:12px;font-weight:500;}
+.dc-lbl{font-size:9px;color:var(--text3);}
+.legend{display:flex;flex-wrap:wrap;gap:7px;font-size:10px;color:var(--text2);}
+.leg-item{display:flex;align-items:center;gap:3px;}
+.leg-sq{width:8px;height:8px;border-radius:2px;flex-shrink:0;}
+.leg-dot{width:7px;height:7px;border-radius:50%;flex-shrink:0;}
+
+/*───────────────────────────────────────────────────────
+  SECTION DIVIDER
+───────────────────────────────────────────────────────*/
+.sdiv{
+  font-size:9px;color:var(--text3);text-transform:uppercase;letter-spacing:.08em;
+  margin:12px 0 7px;display:flex;align-items:center;gap:7px;
+}
+.sdiv::after{content:'';flex:1;height:0.5px;background:var(--border2);}
+
+/*───────────────────────────────────────────────────────
+  TABLE
+───────────────────────────────────────────────────────*/
+.fbar{display:flex;align-items:center;gap:5px;flex-wrap:wrap;}
+.fbar select{
+  font-size:11px;padding:3px 6px;
+  border:0.5px solid var(--border2);border-radius:var(--radius);
+  background:var(--surface2);color:var(--text);outline:none;color-scheme:dark;
+}
+.tbl-section{background:var(--surface);border:0.5px solid var(--border2);border-radius:var(--radius-lg);padding:11px 13px;margin-top:8px;}
+.tbl-hdr{display:flex;align-items:flex-start;justify-content:space-between;flex-wrap:wrap;gap:8px;margin-bottom:8px;}
+.tbl-legend-wrap{flex:1;min-width:0;}
+.tbl-wrap{overflow-x:auto;max-height:420px;overflow-y:auto;}
+table{width:100%;border-collapse:collapse;font-size:11px;min-width:960px;}
+thead th{
+  font-size:9px;font-weight:500;color:var(--text2);text-align:left;
+  padding:5px 8px;border-bottom:0.5px solid var(--border2);
+  background:var(--surface2);white-space:nowrap;position:sticky;top:0;z-index:2;
+}
+tbody td{
+  padding:4px 8px;border-bottom:0.5px solid var(--border);
+  color:var(--text);font-size:11px;vertical-align:middle;
+}
+tbody td.mono{font-family:'SF Mono',Consolas,'Courier New',monospace;font-size:10px;}
+/* Two-line date+time cell */
+.dt-cell{display:flex;flex-direction:column;gap:1px;min-width:72px;}
+.dt-date{font-size:11px;color:var(--text);font-weight:500;}
+.dt-time{font-size:10px;color:var(--text3);font-family:'SF Mono',Consolas,monospace;}
+/* Time-range cell */
+.tr-cell{display:flex;flex-direction:column;gap:1px;min-width:80px;}
+.tr-start{font-size:10px;color:var(--text2);font-family:'SF Mono',Consolas,monospace;}
+.tr-end{font-size:10px;color:var(--text3);font-family:'SF Mono',Consolas,monospace;}
+.tr-arr{color:var(--text3);font-size:9px;margin:0 2px;}
+tbody tr:hover td{background:rgba(255,255,255,.03);}
+tr.total-row td{font-weight:500;background:var(--surface2);border-top:0.5px solid var(--border2);}
+
+/* Channel H tags — from --ch* vars */
+.h-tag{display:inline-block;font-size:9px;font-weight:600;padding:2px 6px;border-radius:3px;}
+.h-tag.h1{background:rgba(74,163,245,.17);color:var(--ch1);}
+.h-tag.h2{background:rgba(240,180,41,.17);color:var(--ch2);}
+.h-tag.h3{background:rgba(46,204,143,.17);color:var(--ch3);}
+.h-tag.h4{background:rgba(155,127,232,.17);color:var(--ch4);}
+
+/* Row left-border stripe by channel */
+tr.rh1{border-left:2.5px solid var(--ch1);}
+tr.rh2{border-left:2.5px solid var(--ch2);}
+tr.rh3{border-left:2.5px solid var(--ch3);}
+tr.rh4{border-left:2.5px solid var(--ch4);}
+
+
+
+
+
+
+
+/*───────────────────────────────────────────────────────
+  MISC
+───────────────────────────────────────────────────────*/
+.loading{text-align:center;padding:60px 24px;color:var(--text2);}
+.spinner{
+  width:24px;height:24px;border:2.5px solid var(--border2);
+  border-top-color:var(--blue);border-radius:50%;
+  animation:spin .7s linear infinite;margin:0 auto 10px;
+}
+@keyframes spin{to{transform:rotate(360deg);}}
+.err-box{
+  background:rgba(232,97,58,.09);border:0.5px solid rgba(232,97,58,.3);
+  border-radius:var(--radius);padding:9px 13px;color:#f09575;
+  font-size:12px;margin-bottom:10px;
+}
+
+/*───────────────────────────────────────────────────────
+  RESPONSIVE
+───────────────────────────────────────────────────────*/
+@media(max-width:960px){
+  .kpi-grid{grid-template-columns:repeat(3,1fr);}
+  .kpi-ts{display:none;}
+  .row2{grid-template-columns:1fr 1fr;}
+  .tbl-hdr{flex-direction:column;align-items:stretch;}
+  .fbar{justify-content:flex-start;}
+}
+@media(max-width:620px){
+  .kpi-grid{grid-template-columns:repeat(2,1fr);}
+  .row2{grid-template-columns:1fr;}
+  .hdr-right{width:100%;}
+  .date-row{flex-wrap:wrap;}
+  .diag-bar{grid-template-columns:repeat(2,1fr);}
+  .fbar{flex-wrap:wrap;gap:6px;}
+  .fbar select{flex:1;min-width:100px;}
+}
+@media(max-width:400px){
+  .kpi-grid{grid-template-columns:1fr 1fr;}
+  .container{padding:10px 10px;}
+}
+::-webkit-scrollbar{width:4px;height:4px;}
+::-webkit-scrollbar-thumb{background:var(--border2);border-radius:2px;}
+
+/* ── Export dropdown ─────────────────────────────── */
+.export-wrap{position:relative;}
+.export-menu{
+  display:none;position:absolute;right:0;top:calc(100% + 4px);
+  background:var(--surface3);border:0.5px solid var(--border2);
+  border-radius:var(--radius);z-index:200;min-width:145px;
+  box-shadow:0 6px 20px rgba(0,0,0,.5);overflow:hidden;
+}
+.export-menu.open{display:block;}
+.export-item{
+  display:flex;align-items:center;gap:7px;
+  padding:9px 13px;font-size:12px;color:var(--text);
+  cursor:pointer;transition:background .12s;white-space:nowrap;
+}
+.export-item svg{flex-shrink:0;}
+.export-item:hover{background:var(--surface2);}
+
+/* ── Filter active indicator ─────────────────────── */
+.filter-badge{
+  display:none;align-items:center;gap:8px;font-size:11px;
+  background:rgba(74,163,245,.1);color:var(--blue);
+  padding:7px 16px;
+  border-bottom:0.5px solid rgba(74,163,245,.28);
+  position:sticky;top:45px;z-index:99;
+  width:100%;margin:0;border-radius:0;
+}
+.filter-badge.active{display:flex;}
+.filter-badge-text{flex:1;font-size:11px;}
+.filter-reset-btn{
+  display:flex;align-items:center;gap:5px;
+  background:rgba(74,163,245,.18);color:var(--blue);
+  border:0.5px solid rgba(74,163,245,.35);
+  border-radius:var(--radius);padding:3px 10px;
+  font-size:11px;cursor:pointer;white-space:nowrap;
+  transition:background .15s;
+}
+.filter-reset-btn:hover{background:rgba(74,163,245,.3);}
+/* ── Timeline view pills ─────────────────────────── */
+.tl-pills{display:flex;gap:4px;flex-wrap:wrap;}
+.tl-pill{
+  font-size:10px;padding:3px 9px;border-radius:20px;cursor:pointer;
+  border:0.5px solid var(--border2);background:var(--surface2);
+  color:var(--text2);transition:all .15s;
+}
+.tl-pill:hover{background:var(--surface3);color:var(--text);}
+.tl-pill.active{background:var(--blue2);color:#fff;border-color:var(--blue2);}
+/* ── Floating Report Button ──────────────────────── */
+#fab-report{
+  position:fixed;bottom:24px;right:24px;z-index:900;
+  display:flex;align-items:center;gap:8px;
+  padding:12px 20px;border-radius:50px;
+  background:var(--blue2);color:#fff;border:none;
+  font-size:13px;font-weight:500;cursor:pointer;
+  box-shadow:0 4px 16px rgba(0,0,0,.4);
+  transition:transform .15s,box-shadow .15s;
+}
+#fab-report:hover{transform:translateY(-2px);box-shadow:0 6px 20px rgba(0,0,0,.5);}
+
+@media print{
+  #login-overlay,#fab-report,#report-modal,
+  .export-wrap,.filter-badge,#report-frame{display:none!important;}
+  body{background:#fff!important;}
+  .container{max-width:100%!important;padding:6px 10px!important;}
+  .header{position:static!important;padding:6px 10px!important;margin-bottom:6px!important;}
+  .health-banner{font-size:10px!important;}
+  .kpi-grid{grid-template-columns:repeat(5,1fr)!important;}
+  .kpi,.kpi-ts,.kpi-icon-card{background:#f8f8f8!important;border-color:#ddd!important;}
+  .kpi-val,.kpi-kwh,.kpi-pulse{font-size:16px!important;color:#111!important;}
+  .diag-bar{display:grid!important;grid-template-columns:repeat(10,1fr)!important;}
+  .diag-card{background:#f4f4f4!important;border-color:#ddd!important;padding:4px 6px!important;}
+  .diag-val{font-size:11px!important;color:#111!important;}
+  #charts-section{display:block!important;}
+  #charts-section .chart-card{background:#fff!important;border:0.5px solid #ddd!important;break-inside:avoid;}
+  #charts-section canvas{max-height:120px!important;width:100%!important;}
+  .chart-wrap{height:120px!important;}
+  .tbl-section{background:#fff!important;}
+  .tbl-wrap{max-height:none!important;overflow:visible!important;}
+  table{min-width:0!important;font-size:10px!important;}
+  thead th{background:#f0f0f0!important;color:#555!important;font-size:10px!important;}
+  tbody td{color:#111!important;font-size:10px!important;}
+  .tl-pills,.filter-reset-btn{display:none!important;}
+  .sdiv{font-size:9px!important;}
+  @page{margin:8mm;size:A4 landscape;}
+}
+</style>
+</head>
+<body>
+
+<!-- ══════════════════════════════════════════════
+     LOGIN OVERLAY
+══════════════════════════════════════════════════ -->
+<div id="login-overlay">
+  <div class="lbox">
+    <div class="lbox-logo">
+      <div class="lbox-icon" style="background:none;padding:0;overflow:hidden;"><img src="data:image/png;base64,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" style="width:34px;height:34px;border-radius:6px;display:block;"></div>
+      <span class="lbox-title">CTS GSM Energy</span>
+    </div>
+    <p class="lbox-sub">Sign in to access the dashboard</p>
+    <div class="lbox-field">
+      <label>Endpoint</label>
+      <input id="auth-ep" type="text" value="" placeholder="e.g. https://your-app.azurewebsites.net/api/v1">
+    </div>
+    <div class="lbox-field">
+      <label>Device ID</label>
+      <input id="auth-dev" type="text" value="" placeholder="e.g. device-001">
+    </div>
+    <div class="lbox-field">
+      <label>Access Key</label>
+      <input id="auth-key" type="password" value="" placeholder="e.g. your-api-access-key">
+    </div>
+    <div style="display:flex;align-items:center;gap:8px;margin:8px 0 14px;">
+      <input type="checkbox" id="remember-me" style="width:15px;height:15px;cursor:pointer;accent-color:#1a6ef5;">
+      <label for="remember-me" style="font-size:12px;color:var(--text2);cursor:pointer;margin:0;">Remember me on this device</label>
+    </div>
+    <button class="lbox-btn" onclick="doLogin()">Connect</button>
+    <div class="lbox-err" id="login-err"></div>
+  </div>
+</div>
+
+
+
+<!-- ══════════════════════════════════════════════
+     MAIN DASHBOARD
+══════════════════════════════════════════════════ -->
+
+  <!-- STICKY HEADER — full width -->
+  <div class="header">
+    <div class="hdr-left">
+      <span class="hdr-title">CTS GSM Energy Dashboard</span>
+      <span class="dev-tag" id="hdr-dev">energyeye-001</span>
+      <span class="hdr-status"><span class="live-dot"></span><span id="data-range">Loading…</span></span>
+    </div>
+    <div class="hdr-right">
+      <div class="date-row">
+        <span>From</span><input type="date" id="d-from">
+        <span>To</span><input type="date" id="d-to">
+      </div>
+      <button class="btn btn-pri" onclick="applyDates()">Apply</button>
+      <span id="dev-address" style="font-size:10px;color:var(--text3);max-width:200px;overflow:hidden;text-overflow:ellipsis;white-space:nowrap;display:none;"></span>
+      <div class="export-wrap">
+        <button class="btn" onclick="toggleExportMenu(event)">Export ▾</button>
+        <div class="export-menu" id="export-menu">
+          <div class="export-item" onclick="exportCSV();closeExportMenu()">
+            <svg width="13" height="13" viewBox="0 0 16 16" fill="currentColor"><path d="M2 14h12v1.5H2V14zm6-1.5L3.5 8H7V1h2v7h3.5L8 12.5z"/></svg>
+            Export CSV
+          </div>
+          <div class="export-item" onclick="printDashboard();closeExportMenu()">
+            <svg width="13" height="13" viewBox="0 0 16 16" fill="currentColor"><path d="M4 0h8v4H4V0zm-2 5h12a2 2 0 012 2v5h-3v4H3v-4H0V7a2 2 0 012-2zm2 8h8v-3H4v3zm8-8a1 1 0 110 2 1 1 0 010-2z"/></svg>
+            Print / PDF
+          </div>
+        </div>
+      </div>
+      <button class="btn btn-out" onclick="doLogout()">Sign Out</button>
+    </div>
+  </div>
+
+  <!-- STICKY FILTER BADGE — full width, just below header -->
+  <div id="filter-badge" class="filter-badge">
+    <svg width="12" height="12" viewBox="0 0 16 16" fill="currentColor" style="flex-shrink:0;"><path d="M1 3h14l-5 6v5l-4-2V9L1 3z"/></svg>
+    <span class="filter-badge-text" id="filter-badge-text">Filtered</span>
+    <button class="filter-reset-btn" onclick="clearFilter()">
+      <svg width="10" height="10" viewBox="0 0 16 16" fill="currentColor"><path d="M13.4 2.6A7 7 0 1 0 14.9 9h-1.5a5.5 5.5 0 1 1-1.1-3.9L10 7h4V3l-0.6-0.4z"/></svg>
+      Reset filter
+    </button>
+  </div>
+
+<div class="container">
+
+  <div id="err-box" class="err-box" style="display:none;"></div>
+  <div id="loading" class="loading"><div class="spinner"></div>Connecting to EnergyEye API…</div>
+
+  <div id="main" style="display:none;padding-top:4px;">
+
+    <!-- DEVICE HEALTH BANNER -->
+    <div id="health-banner" style="display:none;align-items:center;gap:10px;padding:9px 14px;border-radius:6px;font-size:12px;border-left:3px solid #1D9E75;background:rgba(29,158,117,0.08);margin-bottom:10px;">
+      <div id="health-icon" style="width:16px;height:16px;border-radius:50%;flex-shrink:0;background:#1D9E75;display:flex;align-items:center;justify-content:center;">
+        <svg width="10" height="10" viewBox="0 0 16 16" fill="#fff"><path d="M13 4L6 11 3 8l-1.4 1.4L6 13.8 14.4 5.4z"/></svg>
+      </div>
+      <div id="health-msg" style="flex:1;color:var(--text);"></div>
+      <span id="health-tag" style="font-size:10px;padding:2px 8px;border-radius:20px;white-space:nowrap;font-weight:500;background:rgba(29,158,117,0.15);color:#085041;"></span>
+    </div>
+
+    <!-- KPI ROW -->
+    <div class="kpi-grid">
+      <div class="kpi-ts">
+        <div class="kpi-ts-val" id="kpi-ts">--</div>
+        <div class="kpi-ts-lbl">Latest data.timestamp</div>
+      </div>
+      <div class="kpi">
+        <div class="kpi-lbl">Total kWh</div>
+        <div class="kpi-val" id="kpi-kwh">--</div>
+        <div class="kpi-sub">all channels</div>
+      </div>
+      <div class="kpi">
+        <div class="kpi-lbl">Total Pulse</div>
+        <div class="kpi-val" id="kpi-pulse">--</div>
+        <div class="kpi-sub">all channels (imp)</div>
+      </div>
+      <div class="kpi kpi-icon-card">
+        <div class="kpi-lbl">Battery (2×D cell)</div>
+        <div style="display:flex;align-items:center;gap:10px;margin-top:4px;">
+          <!-- Smartphone battery icon -->
+          <svg id="batt-icon" width="36" height="18" viewBox="0 0 36 18" fill="none">
+            <rect x="1" y="1" width="31" height="16" rx="2.5" stroke="#444" stroke-width="1.5"/>
+            <rect x="32.5" y="5.5" width="2.5" height="7" rx="1" fill="#444"/>
+            <rect id="batt-fill" x="2.5" y="2.5" width="28" height="13" rx="1.5" fill="#2ecc8f"/>
+          </svg>
+          <div>
+            <div class="kpi-val" id="kpi-batt" style="font-size:18px;">--</div>
+            <div class="kpi-sub" id="kpi-batt-mv" style="font-size:10px;">--</div>
+          </div>
+        </div>
+      </div>
+      <div class="kpi kpi-icon-card">
+        <div class="kpi-lbl">Meter LED Signal</div>
+        <div style="display:flex;align-items:center;gap:10px;margin-top:4px;">
+          <!-- Colored status dot -->
+          <svg id="sig-dot-svg" width="18" height="18" viewBox="0 0 18 18">
+            <circle id="sig-dot" cx="9" cy="9" r="7" fill="#2ecc8f"/>
+            <circle cx="9" cy="9" r="4" fill="rgba(255,255,255,0.25)"/>
+          </svg>
+          <div>
+            <div class="kpi-val" id="kpi-sig" style="font-size:18px;">--</div>
+            <div class="kpi-sub" id="kpi-sig-lbl" style="font-size:10px;">--</div>
+          </div>
+        </div>
+        <div style="font-size:9px;color:var(--text3);margin-top:6px;">light contrast · Δlux (OPT3001)</div>
+      </div>
+    </div>
+
+    <!-- V3 DIAGNOSTIC BAR -->
+    <div class="sdiv">V3 payload diagnostics — all values from real API fields</div>
+    <div class="diag-bar">
+      <div class="diag-card"><div class="diag-lbl">Version / Channels</div><div class="diag-val" id="dg-ver">--</div><div class="diag-sub" id="dg-ver-sub">payload version</div></div>
+      <div class="diag-card"><div class="diag-lbl">Frames / TX</div><div class="diag-val" id="dg-frames">--</div><div class="diag-sub">rolling 24 h window</div></div>
+      <div class="diag-card"><div class="diag-lbl">Payload size</div><div class="diag-val" id="dg-size">--</div><div class="diag-sub">bytes (2+n×30+8)</div></div>
+      <div class="diag-card"><div class="diag-lbl">Flags (raw)</div><div class="diag-val" id="dg-flags">--</div><div class="diag-sub">status byte lower nibble</div></div>
+      <div class="diag-card"><div class="diag-lbl">Fail count</div><div class="diag-val" id="dg-fail">--</div><div class="diag-sub">consecutive TX fails · &gt;3=backoff</div></div>
+      <div class="diag-card"><div class="diag-lbl">Recal count</div><div class="diag-val" id="dg-recal">--</div><div class="diag-sub">OPT3001 recalibs · &gt;100=unstable</div></div>
+      <div class="diag-card"><div class="diag-lbl">Zero buckets</div><div class="diag-val" id="dg-zero">--</div><div class="diag-sub">missed pulses · &gt;0=check sensor</div></div>
+      <div class="diag-card"><div class="diag-lbl">SAS renewals</div><div class="diag-val" id="dg-sas">--</div><div class="diag-sub">Azure IoT · &gt;2=clock drift</div></div>
+      <div class="diag-card"><div class="diag-lbl">Reset reason</div><div class="diag-val" id="dg-reset">--</div><div class="diag-sub">last boot cause</div></div>
+      <div class="diag-card"><div class="diag-lbl">Battery</div><div class="diag-val" id="dg-batt-mv">--</div><div class="diag-sub" id="dg-nibble-label">nibble · %</div></div>
+    </div>
+
+    <!-- CHARTS SECTION - hidden when printing dashboard -->
+    <div id="charts-section">
+    <div style="display:flex;align-items:center;justify-content:space-between;flex-wrap:wrap;gap:8px;padding:8px 12px;background:var(--surface2);border:0.5px solid var(--border2);border-radius:var(--radius);margin-bottom:8px;">
+      <span style="font-size:11px;color:var(--text2);font-weight:500;">Chart view:</span>
+      <div class="tl-pills" id="chart-pills">
+        <button class="tl-pill"        data-view="payload" onclick="setChartView('payload')">Latest payload</button>
+        <button class="tl-pill"        data-view="today"   onclick="setChartView('today')">Today</button>
+        <button class="tl-pill"        data-view="month"   onclick="setChartView('month')">Latest month</button>
+        <button class="tl-pill active" data-view="all"     onclick="setChartView('all')">All</button>
+      </div>
+    </div>
+
+    <!-- ROW 1: Battery trend + Transmission schedule -->
+    <div style="display:grid;grid-template-columns:minmax(0,1fr) minmax(0,1fr);gap:8px;margin-bottom:8px;">
+
+      <div class="chart-card" style="min-width:0;">
+        <div class="card-title">Battery Voltage Trend</div>
+        <div class="legend" id="batt-trend-stats" style="margin-bottom:5px;gap:6px;flex-wrap:wrap;"></div>
+        <div class="chart-wrap" style="height:200px;">
+          <canvas id="battTrendChart" role="img" aria-label="Line chart of battery voltage over time">Battery trend</canvas>
+        </div>
+      </div>
+
+      <div class="chart-card" style="min-width:0;">
+        <div class="card-title">Transmission Schedule <span style="font-size:9px;color:var(--text3);font-weight:400;">— expected every 6 h</span></div>
+        <div class="legend" id="gap-stats" style="margin-bottom:5px;gap:6px;flex-wrap:wrap;"></div>
+        <div id="tx-grid" style="margin-bottom:6px;"></div>
+        <div id="gap-list" style="margin-top:4px;font-size:10px;color:var(--text3);display:flex;flex-direction:column;gap:2px;"></div>
+      </div>
+
+    </div>
+
+    <!-- ROW 2: LED Signal + kWh Timeline -->
+    <div style="display:grid;grid-template-columns:minmax(0,1fr) minmax(0,1fr);gap:8px;margin-bottom:8px;">
+
+      <div class="chart-card" style="min-width:0;">
+        <div style="display:flex;align-items:baseline;gap:6px;margin-bottom:6px;">
+          <span class="card-title" style="margin-bottom:0;">Meter LED Signal</span>
+          <span style="font-size:9px;color:var(--text3);">minContrast (Δlux)</span>
+        </div>
+        <div class="legend" id="sig-stats" style="gap:6px;flex-wrap:wrap;margin-bottom:5px;"></div>
+        <div class="legend" style="gap:8px;margin-bottom:6px;flex-wrap:wrap;">
+          <span class="leg-item"><span class="leg-dot" style="background:#2ecc8f;"></span><span style="color:#2ecc8f;">strong 200+</span></span>
+          <span class="leg-item"><span class="leg-dot" style="background:#4aa3f5;"></span><span style="color:#4aa3f5;">good 50–199</span></span>
+          <span class="leg-item"><span class="leg-dot" style="background:#f0b429;"></span><span style="color:#f0b429;">marginal 1–49</span></span>
+          <span class="leg-item"><span class="leg-dot" style="background:#e84a4a;"></span><span style="color:#e84a4a;">no signal 0</span></span>
+          <span class="leg-item"><span class="leg-dot" style="background:#636178;"></span><span style="color:#636178;">no reading</span></span>
+        </div>
+        <div class="chart-wrap" style="height:180px;">
+          <canvas id="sigChart" role="img" aria-label="Line chart of OPT3001 light sensor contrast over time">LED Signal trend</canvas>
+        </div>
+      </div>
+
+      <div class="chart-card" style="min-width:0;">
+        <div class="card-title" id="tl-title">Sum of H_Value_KWh</div>
+        <div class="legend" id="tl-legend" style="margin-bottom:6px;"></div>
+        <div class="chart-wrap" style="height:225px;">
+          <canvas id="timelineChart" role="img" aria-label="Bar chart kWh timeline">Timeline kWh</canvas>
+        </div>
+      </div>
+
+    </div>
+
+    </div><!-- /charts-section -->
+
+    <!-- INTERVAL TABLE -->
+    <div class="sdiv">interval data table</div>
+    <div class="tbl-section">
+      <div class="tbl-hdr">
+        <div class="tbl-legend-wrap">
+          <div class="legend" style="flex-wrap:wrap;row-gap:5px;">
+            <span class="leg-item"><span class="leg-sq" style="background:rgba(74,163,245,.13);border:0.5px solid var(--ch1);"></span><span style="color:var(--ch1);">H01</span></span>
+            <span class="leg-item"><span class="leg-sq" style="background:rgba(240,180,41,.13);border:0.5px solid var(--ch2);"></span><span style="color:var(--ch2);">H02</span></span>
+            <span class="leg-item"><span class="leg-sq" style="background:rgba(46,204,143,.13);border:0.5px solid var(--ch3);"></span><span style="color:var(--ch3);">H03</span></span>
+            <span class="leg-item"><span class="leg-sq" style="background:rgba(155,127,232,.13);border:0.5px solid var(--ch4);"></span><span style="color:var(--ch4);">H04</span></span>
+            <span style="margin-left:4px;font-size:10px;color:var(--text3);">Meter LED Signal (Δlux):</span>
+            <span class="leg-item"><span class="leg-sq" style="background:var(--sig-marg-bg);border:0.5px solid var(--sig-marg-fg);"></span><span style="color:var(--sig-marg-fg);">marginal</span></span>
+            <span class="leg-item"><span class="leg-sq" style="background:var(--sig-good-bg);border:0.5px solid var(--sig-good-fg);"></span><span style="color:var(--sig-good-fg);">good</span></span>
+            <span class="leg-item"><span class="leg-sq" style="background:var(--sig-str-bg);border:0.5px solid var(--sig-str-fg);"></span><span style="color:var(--sig-str-fg);">strong</span></span>
+            <span class="leg-item"><span class="leg-sq" style="background:var(--sig-none-bg);border:0.5px solid var(--sig-none-fg);"></span><span style="color:var(--sig-none-fg);">none</span></span>
+          </div>
+        </div>
+        <div class="fbar">
+          <label style="font-size:10px;color:var(--text3);">Channel</label>
+          <select id="h-filter">
+            <option value="all">All channels</option>
+            <option>H01</option><option>H02</option><option>H03</option><option>H04</option>
+          </select>
+          <label style="font-size:10px;color:var(--text3);">Order</label>
+          <select id="sort-filter">
+            <option value="latest" selected>Latest first</option>
+            <option value="oldest">Oldest first</option>
+          </select>
+          <label style="font-size:10px;color:var(--text3);">Rows</label>
+          <select id="rows-filter">
+            <option value="20" selected>20</option>
+            <option value="50">50</option>
+            <option value="100">100</option>
+            <option value="200">200</option>
+            <option value="500">500</option>
+          </select>
+        </div>
+      </div>
+      <div class="tbl-wrap">
+        <table>
+          <thead>
+            <tr>
+              <th>data.timestamp</th>
+              <th>Next timestamp</th>
+              <th>H start</th>
+              <th>H end</th>
+              <th>H</th>
+              <th>H_Value_KWh</th>
+              <th>Inst. kW</th>
+              <th>Pulse</th>
+              <th>#</th>
+              <th>Duration</th>
+              <th>Min</th>
+              <th>Pulse Rate</th>
+              <th>Flags</th>
+              <th>LED Signal</th>
+            </tr>
+          </thead>
+          <tbody id="tbl-body"></tbody>
+        </table>
+      </div>
+    </div>
+
+  </div><!-- /main -->
+</div><!-- /container -->
+
+<!-- FLOATING REPORT BUTTON -->
+<button onclick="openReport()" id="fab-report" title="Generate printable report">
+  <svg width="18" height="18" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2">
+    <path d="M14 2H6a2 2 0 0 0-2 2v16a2 2 0 0 0 2 2h12a2 2 0 0 0 2-2V8z"/>
+    <polyline points="14 2 14 8 20 8"/>
+    <line x1="16" y1="13" x2="8" y2="13"/>
+    <line x1="16" y1="17" x2="8" y2="17"/>
+    <polyline points="10 9 9 9 8 9"/>
+  </svg>
+  Report
+</button>
+
+<!-- REPORT MODAL -->
+<div id="report-modal" style="display:none;position:fixed;top:0;left:0;width:100vw;height:100vh;z-index:99999;background:rgba(0,0,0,.88);box-sizing:border-box;">
+  <div style="position:absolute;top:50%;left:50%;transform:translate(-50%,-50%);width:min(780px,92vw);height:90vh;display:flex;flex-direction:column;gap:10px;">
+    <iframe id="report-frame" style="flex:1;border:none;border-radius:10px;background:#fff;box-shadow:0 20px 60px rgba(0,0,0,.6);"></iframe>
+    <div style="display:flex;gap:10px;justify-content:flex-end;">
+      <button onclick="printReport()" style="padding:10px 24px;background:#1a6ef5;color:#fff;border:none;border-radius:6px;cursor:pointer;font-size:13px;font-weight:500;">🖨 Print / Save PDF</button>
+      <button onclick="closeReport()" style="padding:10px 18px;background:#555;color:#fff;border:none;border-radius:6px;cursor:pointer;font-size:13px;">✕ Close</button>
+    </div>
+  </div>
+</div>
+
+<script>
+/*═══════════════════════════════════════════════════════
+  CENTRALISED COLOR MAPS
+  All color logic lives here — referenced from table,
+  charts, badges, payload cells, and modal.
+═══════════════════════════════════════════════════════*/
+const SIG = {
+  classify(v) {
+    if (v === 65535) return { cls:'invalid',  label:'no reading this hour', hex:'#636178' };
+    if (v === 0)     return { cls:'none',     label:'no signal',            hex:'#e84a4a' };
+    if (v < 50)      return { cls:'marginal', label:'marginal',             hex:'#f0b429' };
+    if (v < 200)     return { cls:'good',     label:'good',                 hex:'#4aa3f5' };
+                     return { cls:'strong',   label:'strong',               hex:'#2ecc8f' };
+  }
+};
+
+const CH = {
+  colors: ['#4aa3f5','#f0b429','#2ecc8f','#9b7fe8'],
+  colorsA: ['#4aa3f5bb','#f0b429bb','#2ecc8fbb','#9b7fe8bb'],
+  names:  ['H01','H02','H03','H04'],
+  keys:   ['intervalKwh1','intervalKwh2','intervalKwh3','intervalKwh4'],
+  pulse:  ['pulseCount1','pulseCount2','pulseCount3','pulseCount4'],
+};
+
+const DAY_NAMES  = ['Sun','Mon','Tue','Wed','Thu','Fri','Sat'];
+const DAY_COLORS = ['#4aa3f5','#f0b429','#2ecc8f','#9b7fe8','#e8613a','#2ec4b6','#e87fb4'];
+const MON_NAMES  = ['Jan','Feb','Mar','Apr','May','Jun','Jul','Aug','Sep','Oct','Nov','Dec'];
+const PULSE_RATE = 1000;
+
+const TICK = { font:{size:9}, color:'#9e9cb6' };
+const GRID = { color:'rgba(255,255,255,0.045)' };
+
+let API_BASE='', API_KEY='', DEVICE_ID='';
+let rawData=[], intervals=[], C={};
+
+/*═══════════════════════════════════════════════════════
+  AUTH
+═══════════════════════════════════════════════════════*/
+function doLogin(){
+  const ep  = document.getElementById('auth-ep').value.trim().replace(/\/+$/,'');
+  const dev = document.getElementById('auth-dev').value.trim();
+  const key = document.getElementById('auth-key').value.trim();
+  const rem = document.getElementById('remember-me').checked;
+  if (!ep||!dev||!key){ showLoginErr('All fields are required.'); return; }
+
+  // Save or clear credentials based on Remember Me
+  if(rem){
+    localStorage.setItem('cts_ep',  ep);
+    localStorage.setItem('cts_dev', dev);
+    localStorage.setItem('cts_key', key);
+    localStorage.setItem('cts_rem', '1');
+  } else {
+    ['cts_ep','cts_dev','cts_key','cts_rem'].forEach(k=>localStorage.removeItem(k));
+  }
+
+  API_BASE  = `${ep}/api/v1/devices/${dev}/data`;
+  API_KEY   = key;
+  DEVICE_ID = dev;
+  document.getElementById('hdr-dev').textContent = dev;
+  document.getElementById('login-overlay').style.display = 'none';
+  fetchDeviceAddress();
+  fetchAndRender('2020-01-01', '2099-12-31');
+}
+
+function doLogout(){
+  API_BASE=''; API_KEY='';
+  document.getElementById('main').style.display = 'none';
+  document.getElementById('login-overlay').style.display = 'flex';
+}
+
+// Auto-fill saved credentials on page load
+(function(){
+  if(localStorage.getItem('cts_rem')==='1'){
+    const ep  = localStorage.getItem('cts_ep')||'';
+    const dev = localStorage.getItem('cts_dev')||'';
+    const key = localStorage.getItem('cts_key')||'';
+    if(ep && dev && key){
+      document.getElementById('auth-ep').value  = ep;
+      document.getElementById('auth-dev').value = dev;
+      document.getElementById('auth-key').value = key;
+      document.getElementById('remember-me').checked = true;
+    }
+  }
+})();
+function showLoginErr(m){
+  const e = document.getElementById('login-err');
+  e.textContent = m; e.style.display = 'block';
+}
+document.getElementById('auth-key').addEventListener('keydown', e=>{ if(e.key==='Enter') doLogin(); });
+
+/*═══════════════════════════════════════════════════════
+  DEVICE ADDRESS — fetch from API metadata endpoint
+  Tries /api/v1/devices/{id} for device info.
+  Falls back gracefully if endpoint doesn't exist.
+═══════════════════════════════════════════════════════*/
+async function fetchDeviceAddress(){
+  const el = document.getElementById('dev-address');
+  try{
+    const base = API_BASE.replace('/data','');
+    const resp = await fetch(base, { headers:{'X-API-Key':API_KEY} });
+    if(!resp.ok) throw new Error('no metadata');
+    const info = await resp.json();
+    const addr = info.address || info.location || info.siteAddress ||
+                 info.installAddress || info.deviceAddress ||
+                 (info.metadata && (info.metadata.address || info.metadata.location)) ||
+                 null;
+    if(addr){
+      el.textContent = '📍 '+addr;
+      el.style.display = 'inline-block';
+      el.title = 'Device address from API: '+addr;
+    } else if(info.deviceId || info.name){
+      const label = [info.name, info.partnerId, info.region].filter(Boolean).join(' · ');
+      if(label){ el.textContent = label; el.style.display='inline-block'; }
+    }
+  } catch(e){
+    console.log('Device address not available:', e.message);
+  }
+}
+
+/*═══════════════════════════════════════════════════════
+  FORMATTERS
+═══════════════════════════════════════════════════════*/
+function fmtDT(ts){
+  if(!ts) return '';
+  const d = new Date(ts);
+  const pad = n => String(n).padStart(2,'0');
+  return `${pad(d.getDate())}/${pad(d.getMonth()+1)}/${d.getFullYear()} ${pad(d.getHours())}:${pad(d.getMinutes())}:${pad(d.getSeconds())}`;
+}
+function fmtLbl(ts){
+  const d = new Date(ts);
+  return `${d.getMonth()+1}/${d.getDate()} ${String(d.getHours()).padStart(2,'0')}:${String(d.getMinutes()).padStart(2,'0')}`;
+}
+function fmtMKey(ts){ const d=new Date(ts); return `${d.getFullYear()}-${String(d.getMonth()+1).padStart(2,'0')}`; }
+function fmtMLbl(k){ const [y,m]=k.split('-'); return `${MON_NAMES[+m-1]} ${y}`; }
+function durStr(ms){
+  const h=Math.floor(ms/3600000), m=Math.floor((ms%3600000)/60000), s=Math.floor((ms%60000)/1000);
+  return `${String(h).padStart(2,'0')}:${String(m).padStart(2,'0')}:${String(s).padStart(2,'0')}`;
+}
+function decodeReset(b){
+  const map = {0x01:'LP-Reset',0x02:'WDog(W)',0x04:'WDog(I)',0x08:'Software',0x10:'Power-On',0x20:'Pin',0x40:'OBL'};
+  const r = Object.entries(map).filter(([k])=>(b & +k)).map(([,v])=>v);
+  return r.length ? r.join('+') : 'None';
+}
+
+/*═══════════════════════════════════════════════════════
+  BUILD INTERVALS (DAX ExpandedTable_59Z equivalent)
+  4 sub-intervals per raw reading, equal partitions
+═══════════════════════════════════════════════════════*/
+function buildIntervals(rows){
+  const sorted = [...rows].sort((a,b)=>new Date(a.timestamp)-new Date(b.timestamp));
+  const PARTS  = 4;
+  const EPS_MS = 1000;
+
+  const out = [];
+  for(let i=0;i<sorted.length;i++){
+    const r        = sorted[i];
+    const baseTime = new Date(r.timestamp);
+    const prevRow  = sorted[i-1];
+    const prevTime = prevRow ? new Date(prevRow.timestamp) : null;
+    const hasPrev  = !!prevTime;
+    const diffMs   = hasPrev ? baseTime - prevTime : null;
+    const isSeq    = hasPrev && diffMs > 0 && diffMs <= 3600000;
+    const startTime= isSeq ? prevTime : new Date(baseTime.getTime() - 3600000);
+    const endTime  = baseTime;
+    const spanMs   = (endTime - startTime) / PARTS;
+    const battNibble = +(r.batteryLevel||0);
+    const battMv     = +(r.batteryMillivolts||0) || nibbleToMv(battNibble);
+    const battPct    = mvToPct(battMv);
+    const sigVal  = +(r.minContrast!=null ? r.minContrast : 65535);
+    const sigInfo = SIG.classify(sigVal);
+    const pRate = +(r.pulseRate||PULSE_RATE);
+
+    CH.names.forEach((h, ci) => {
+      const val    = ci + 1;
+      const kwh    = +(+(r[CH.keys[ci]]||0)).toFixed(4);
+      const pulse  = Math.round(+(r[CH.pulse[ci]]||0));
+      const hStart = new Date(startTime.getTime() + spanMs*(val-1));
+      const hEnd   = new Date(startTime.getTime() + spanMs*val - (val < PARTS ? EPS_MS : 0));
+      const ms     = hEnd - hStart;
+      const instKW = +(pulse * 12 / pRate).toFixed(3);
+
+      out.push({
+        timestamp:     r.timestamp,
+        nextTimestamp: sorted[i+1] ? sorted[i+1].timestamp : '',
+        h, hStart:hStart.toISOString(), hEnd:hEnd.toISOString(),
+        kwh, pulse, instKW,
+        index:    sorted.length - i,
+        duration: durStr(ms),
+        durMin:   +(ms/60000).toFixed(2),
+        sigVal, sigCls:sigInfo.cls, sigLabel:sigInfo.label,
+        batteryLevel: battNibble,
+        battMv, battPct,
+        flags: +(r.flags||0),
+        rawKwh1:+(r.intervalKwh1||0), rawKwh2:+(r.intervalKwh2||0),
+        rawKwh3:+(r.intervalKwh3||0), rawKwh4:+(r.intervalKwh4||0),
+        rawP1:+(r.pulseCount1||0),    rawP2:+(r.pulseCount2||0),
+        rawP3:+(r.pulseCount3||0),    rawP4:+(r.pulseCount4||0),
+        rawBatt: battNibble, rawBattMv: battMv, rawBattPct: battPct,
+        rawFlags: +(r.flags||0), rawPulseRate: pRate,
+      });
+    });
+  }
+  return out.sort((a,b)=>new Date(b.timestamp)-new Date(a.timestamp));
+}
+
+/*═══════════════════════════════════════════════════════
+  BATTERY HELPERS
+  V3 spec: batteryLevel = upper nibble of status byte (0–15)
+  2×D cells: 3000 mV fresh → 1800 mV dead (1200 mV range)
+  nibble 15 = 3000 mV (100%), nibble 0 = 1800 mV (0%)
+═══════════════════════════════════════════════════════*/
+const BATT_MAX_MV = 3000;
+const BATT_MIN_MV = 1800;
+const BATT_RANGE  = BATT_MAX_MV - BATT_MIN_MV;
+
+function nibbleToMv(nibble){
+  return Math.round(BATT_MIN_MV + (nibble / 15) * BATT_RANGE);
+}
+function mvToPct(mv){
+  return Math.max(0, Math.min(100, Math.round((mv - BATT_MIN_MV) / BATT_RANGE * 100)));
+}
+function battColor(pct){
+  if(pct >= 60) return '#2ecc8f';
+  if(pct >= 30) return '#f0b429';
+  return '#e84a4a';
+}
+
+/*═══════════════════════════════════════════════════════
+  DEVICE HEALTH BANNER
+  Priority order (based on TeraTerm LP-WIN analysis):
+  0. Offline (>7h since last TX vs NOW)
+  1. zeroBucketCount>0 AND recalCount>100  → unstable + lost kWh
+  2. zeroBucketCount>0 AND minContrast<50  → weak signal + lost kWh
+  3. zeroBucketCount>0 alone               → lost pulses
+  4. consecutiveFailCount>3               → TX backoff
+  5. recalCount>100 AND minContrast<50    → pulse loss risk
+  6. recalCount>100 alone                 → frequent recal
+  7. batteryMillivolts<2400               → battery low
+  8. minContrast<50                       → marginal signal
+  9. TX gap>7h                            → connectivity issue
+  10. Healthy
+═══════════════════════════════════════════════════════*/
+function renderHealthBanner(){
+  const latest  = rawData[0]||{};
+  const banner  = document.getElementById('health-banner');
+  const icon    = document.getElementById('health-icon');
+  const msg     = document.getElementById('health-msg');
+  const tag     = document.getElementById('health-tag');
+
+  const zeroBuck  = +(latest.zeroBucketCount||0);
+  const contrast  = +(latest.minContrast!=null?latest.minContrast:65535);
+  const failCnt   = +(latest.consecutiveFailCount||0);
+  const recal     = +(latest.recalCount||0);
+  const battMv    = +(latest.batteryMillivolts||0)||nibbleToMv(+(latest.batteryLevel||0));
+  const battPct   = mvToPct(battMv);
+
+  // Pulse accuracy across filtered period
+  const totalBuckets = rawData.length * 12;
+  const totalMissed  = rawData.reduce((s,r)=>s+(+(r.zeroBucketCount||0)),0);
+  const accuracy     = totalBuckets>0?((totalBuckets-totalMissed)/totalBuckets*100).toFixed(2):'100.00';
+  const lostKwh      = (totalMissed/(+(latest.pulseRate||1000))).toFixed(3);
+
+  const nowMs      = Date.now();
+  const latestMs   = latest.timestamp ? new Date(latest.timestamp).getTime() : 0;
+  const hoursSince = latestMs ? (nowMs - latestMs) / 3600000 : 999;
+
+  const pad   = n => String(n).padStart(2,'0');
+  const fmtTs = ts => { const d=new Date(ts); return`${pad(d.getDate())}/${pad(d.getMonth()+1)} ${pad(d.getHours())}:${pad(d.getMinutes())}`; };
+
+  const sorted     = [...rawData].sort((a,b)=>new Date(a.timestamp)-new Date(b.timestamp));
+  const gapHours   = sorted.slice(1).map((r,i)=>(new Date(r.timestamp)-new Date(sorted[i].timestamp))/3600000);
+  const maxGap     = gapHours.length ? Math.max(...gapHours) : 0;
+  const maxGapFrom = gapHours.length ? sorted[gapHours.indexOf(maxGap)].timestamp : null;
+
+  let msgHtml='', tagHtml='', borderColor='', bgColor='', tagBg='', tagColor='', iconHtml='';
+
+  const critIcon = `<svg width="10" height="10" viewBox="0 0 16 16" fill="#fff"><path d="M8 1L1 14h14L8 1zm0 3l4.5 8h-9L8 4zm-1 3v2h2V7H7zm0 3v1h2v-1H7z"/></svg>`;
+  const warnIcon = `<svg width="10" height="10" viewBox="0 0 16 16" fill="#fff"><circle cx="8" cy="8" r="7"/><rect x="7" y="4" width="2" height="5" fill="#BA7517"/><rect x="7" y="10" width="2" height="2" fill="#BA7517"/></svg>`;
+  const okIcon   = `<svg width="10" height="10" viewBox="0 0 16 16" fill="#fff"><path d="M13 4L6 11 3 8l-1.4 1.4L6 13.8 14.4 5.4z"/></svg>`;
+  const setCrit  = () => { borderColor='#E24B4A'; bgColor='rgba(226,75,74,0.08)'; tagBg='rgba(226,75,74,0.15)'; tagColor='#A32D2D'; iconHtml=critIcon; };
+  const setWarn  = () => { borderColor='#BA7517'; bgColor='rgba(186,117,23,0.08)'; tagBg='rgba(186,117,23,0.15)'; tagColor='#633806'; iconHtml=warnIcon; };
+  const setOk    = () => { borderColor='#1D9E75'; bgColor='rgba(29,158,117,0.08)'; tagBg='rgba(29,158,117,0.15)'; tagColor='#085041'; iconHtml=okIcon; };
+  const sub      = txt => `<span style="color:var(--text3);margin-left:6px;">${txt}</span>`;
+
+  if(hoursSince > 7){
+    setCrit();
+    const h=hoursSince.toFixed(1), when=latest.timestamp?fmtTs(latest.timestamp):'unknown';
+    msgHtml=`<b>Device may be offline</b> — no transmission for <b>${h}h</b> · last seen ${when} ${sub('Expected every 6h · check power and network')}`;
+    tagHtml=`Offline ${h}h`;
+  } else if(zeroBuck>0 && recal>100){
+    setCrit();
+    msgHtml=`<b>Unstable signal causing lost kWh</b> — zeroBucketCount: ${zeroBuck} · recalCount: ${recal} · minContrast: ${contrast===65535?'N/A':contrast+' Δlux'} ${sub('Sensor recalibrating too often — pulses missed during recal windows · ~'+lostKwh+' kWh unrecorded · check ambient light')}`;
+    tagHtml='Lost kWh + Unstable';
+  } else if(zeroBuck>0 && contrast<50 && contrast!==65535){
+    setCrit();
+    msgHtml=`<b>Weak signal causing lost kWh</b> — zeroBucketCount: ${zeroBuck} · minContrast: ${contrast} Δlux ${sub('Signal too weak during recal — pulses missed · ~'+lostKwh+' kWh unrecorded · clean sensor lens and check angle')}`;
+    tagHtml='Lost kWh + Weak signal';
+  } else if(zeroBuck>0){
+    setCrit();
+    msgHtml=`<b>Lost pulses detected</b> — zeroBucketCount: ${zeroBuck} · accuracy: ${accuracy}% · ~${lostKwh} kWh unrecorded ${sub('Buckets missed during OPT3001 recalibration · check sensor stability')}`;
+    tagHtml=`Lost kWh (${zeroBuck} buckets)`;
+  } else if(failCnt>3){
+    setCrit();
+    msgHtml=`<b>TX backoff active</b> — consecutiveFailCount: ${failCnt} ${sub('Device is skipping transmissions · data gaps expected · check GSM coverage')}`;
+    tagHtml='TX backoff';
+  } else if(recal>100 && contrast<50 && contrast!==65535){
+    setWarn();
+    msgHtml=`<b>Pulse loss risk — signal unstable</b> — recalCount: ${recal} · minContrast: ${contrast} Δlux ${sub('Frequent recalibration + marginal signal = high risk of missed pulses · act before kWh loss occurs')}`;
+    tagHtml='Pulse loss risk';
+  } else if(recal>100){
+    setWarn();
+    msgHtml=`<b>Frequent sensor recalibration</b> — recalCount: ${recal} ${sub('OPT3001 recalibrating often — ambient light instability near sensor · risk of missed pulses during recal windows')}`;
+    tagHtml=`recalCount ${recal}`;
+  } else if(battMv>0 && battMv<2400){
+    setWarn();
+    msgHtml=`<b>Battery low</b> — ${battMv} mV · ${battPct}% remaining ${sub('Plan replacement soon')}`;
+    tagHtml=`Battery ${battPct}%`;
+  } else if(contrast<50 && contrast!==65535){
+    setWarn();
+    msgHtml=`<b>Marginal LED signal</b> — minContrast: ${contrast} Δlux ${sub('Currently detecting but at risk · clean sensor lens · check angle and ambient light')}`;
+    tagHtml='Signal marginal';
+  } else if(maxGap>7){
+    setWarn();
+    const when=maxGapFrom?fmtTs(maxGapFrom):'';
+    msgHtml=`<b>Transmission gap detected</b> — ${maxGap.toFixed(1)}h gap at ${when} ${sub('Check network coverage at install location')}`;
+    tagHtml=`Gap ${maxGap.toFixed(1)}h`;
+  } else {
+    setOk();
+    const when=latest.timestamp?fmtTs(latest.timestamp):'--';
+    msgHtml=`<b>Device healthy</b> — last TX ${when} · ${hoursSince.toFixed(1)}h ago · battery ${battMv} mV (${battPct}%) · signal ${contrast===65535?'N/A':contrast+' Δlux'} · accuracy ${accuracy}% ${sub('All systems nominal')}`;
+    tagHtml='All good';
+  }
+
+  banner.style.display     = 'flex';
+  banner.style.borderColor = borderColor;
+  banner.style.background  = bgColor;
+  icon.style.background    = borderColor;
+  icon.innerHTML           = iconHtml;
+  msg.innerHTML            = msgHtml;
+  tag.textContent          = tagHtml;
+  tag.style.background     = tagBg;
+  tag.style.color          = tagColor;
+}
+
+/*═══════════════════════════════════════════════════════
+  KPI RENDER
+═══════════════════════════════════════════════════════*/
+function renderKPIs(){
+  const tKwh   = intervals.reduce((s,r)=>s+r.kwh,0);
+  const tPulse = rawData.reduce((s,r)=>s+CH.pulse.reduce((ss,k)=>ss+(+(r[k]||0)),0),0);
+  const latest = rawData[0];
+  const nibble  = +((latest||{}).batteryLevel||0);
+  const mv      = +(latest&&latest.batteryMillivolts ? latest.batteryMillivolts : nibbleToMv(nibble));
+  const pct     = mvToPct(mv);
+  const bColor  = battColor(pct);
+
+  const fromMyt = rawData.length ? tsToMytDate(rawData[rawData.length-1].timestamp) : '';
+  const toMyt   = rawData.length ? tsToMytDate(rawData[0].timestamp) : '';
+  document.getElementById('data-range').textContent = `${fromMyt} – ${toMyt} · ${rawData.length} readings (MYT)`;
+  document.getElementById('kpi-ts').textContent     = latest ? fmtDT(latest.timestamp) : '--';
+  document.getElementById('kpi-kwh').innerHTML      = `${tKwh.toLocaleString('en-MY',{minimumFractionDigits:2,maximumFractionDigits:2})}<span class="kpi-unit">kWh</span>`;
+  document.getElementById('kpi-pulse').innerHTML    = `${Math.round(tPulse).toLocaleString('en-MY')}<span class="kpi-unit">imp</span>`;
+  const mvSource = (latest && latest.batteryMillivolts) ? 'exact' : 'est.';
+  document.getElementById('kpi-batt').innerHTML =
+    `<span style="color:${bColor};">${mv}</span><span class="kpi-unit">mV</span>`;
+  document.getElementById('kpi-batt-mv').textContent =
+    `nibble ${nibble}/15 · ${pct}% · ${mvSource}`;
+  const fillW = Math.max(1, Math.round((pct/100)*28));
+  const fillEl = document.getElementById('batt-fill');
+  if(fillEl){ fillEl.setAttribute('width', String(fillW)); fillEl.setAttribute('fill', bColor); }
+  const borderColor = pct>=60 ? '#1a6644' : pct>=30 ? '#7a5a00' : '#7a1a1a';
+  const bRect = document.querySelector('#batt-icon rect:nth-child(1)');
+  const bCap  = document.querySelector('#batt-icon rect:nth-child(2)');
+  if(bRect){ bRect.setAttribute('stroke', bColor); }
+  if(bCap) { bCap.setAttribute('fill', bColor); }
+  const latSig  = latest && latest.minContrast!=null ? +(latest.minContrast) :
+                  (intervals.length ? intervals[0].sigVal : 65535);
+  const si       = SIG.classify(latSig);
+  const sigColor = si.hex;
+  const dot      = document.getElementById('sig-dot');
+  if(dot) dot.setAttribute('fill', sigColor);
+  document.getElementById('kpi-sig').innerHTML =
+    `<span style="color:${sigColor};">${latSig===65535?'N/A':latSig}</span>`;
+  document.getElementById('kpi-sig-lbl').textContent =
+    latSig===65535 ? 'no reading this hour' : si.label;
+}
+
+/*═══════════════════════════════════════════════════════
+  DIAGNOSTIC BAR RENDER — all values from real API fields
+═══════════════════════════════════════════════════════*/
+function renderDiag(){
+  const latest  = rawData[0]||{};
+  const nFrames = +(latest.bucketCount||0) || Math.min(24, rawData.length);
+  const paySize = 2 + nFrames*30 + 8;
+  const battMv  = +(latest.batteryMillivolts||0) || nibbleToMv(+(latest.batteryLevel||0));
+  const battPct = mvToPct(battMv);
+  const nibble  = +(latest.batteryLevel||0);
+  const flagsVal  = +(latest.flags||0);
+  const flagsHex  = '0x'+flagsVal.toString(16).toUpperCase().padStart(2,'0');
+  const failCnt   = +(latest.consecutiveFailCount!=null ? latest.consecutiveFailCount : 0);
+  const recalCnt  = +(latest.recalCount!=null ? latest.recalCount : 0);
+  const zeroBuck  = +(latest.zeroBucketCount!=null ? latest.zeroBucketCount : 0);
+  const resetCode = +(latest.resetReason!=null ? latest.resetReason : 0);
+  const sasRenew  = +(latest.sasRenewCount!=null ? latest.sasRenewCount : 0);
+  const version   = +(latest.version||3);
+  const buckets   = +(latest.bucketCount||4);
+
+  document.getElementById('dg-frames').textContent = nFrames;
+  document.getElementById('dg-size').textContent   = paySize+' B';
+  document.getElementById('dg-flags').innerHTML =
+    `<span style="color:${flagsVal>0?'#f0b429':'#2ecc8f'};">${flagsVal}</span>`;
+  document.getElementById('dg-flags').parentElement.querySelector('.diag-sub').textContent =
+    `${flagsHex} · ${flagsVal===0?'no flags set':'flags active'}`;
+  document.getElementById('dg-fail').innerHTML =
+    `<span style="color:${failCnt>3?'#e84a4a':failCnt>0?'#f0b429':'#2ecc8f'};">${failCnt}</span>`;
+  document.getElementById('dg-recal').innerHTML =
+    `<span style="color:${recalCnt>100?'#f0b429':'var(--text)'};">${recalCnt}</span>`;
+  document.getElementById('dg-zero').innerHTML =
+    `<span style="color:${zeroBuck>0?'#e84a4a':'#2ecc8f'};">${zeroBuck}</span>`;
+  document.getElementById('dg-sas').innerHTML =
+    `<span style="color:${sasRenew>2?'#f0b429':'var(--text)'};">${sasRenew}</span>`;
+  document.getElementById('dg-reset').textContent = decodeReset(resetCode);
+  document.getElementById('dg-ver').textContent = `V${version} / ${buckets}ch`;
+  document.getElementById('dg-ver-sub').textContent = `payload v${version} · ${buckets} active channels`;
+  document.getElementById('dg-batt-mv').innerHTML =
+    `<span style="color:${battColor(battPct)};">${battMv}</span><span style="font-size:11px;color:var(--text3);"> mV</span>`;
+  document.getElementById('dg-nibble-label').textContent =
+    `${nibble}/15 · ${battPct}% · ${latest.batteryMillivolts?'exact':'est.'}`;
+}
+
+/*═══════════════════════════════════════════════════════
+  CHARTS
+═══════════════════════════════════════════════════════*/
+let chartView = 'all'; // shared view state for all 4 charts
+
+function setChartView(view){
+  chartView = view;
+  // Update shared pill group
+  document.querySelectorAll('#chart-pills .tl-pill').forEach(p=>
+    p.classList.toggle('active', p.dataset.view === view)
+  );
+  // Re-render all 4 charts with new view
+  renderBatteryGaps();
+  renderSignalChart();
+  renderTimeline();
+}
+
+// Keep these as aliases pointing to shared state
+function setBgView(v){ setChartView(v); }
+function setSigView(v){ setChartView(v); }
+function setTlView(v){ setChartView(v); }
+
+// Expose view to individual render functions
+function getBgView(){ return chartView; }
+function getSigView(){ return chartView; }
+function getTlView(){ return chartView; }
+
+
+function renderBatteryGaps(){
+  const allSorted = [...rawData].sort((a,b)=>new Date(a.timestamp)-new Date(b.timestamp));
+  const latestTs  = new Date(allSorted[allSorted.length-1].timestamp);
+  const pad = n => String(n).padStart(2,'0');
+  const fmtShort = ts => { const d=new Date(ts); return`${d.getDate()}/${d.getMonth()+1}`; };
+  const fmtFull  = ts => { const d=new Date(ts); return`${pad(d.getDate())}/${pad(d.getMonth()+1)} ${pad(d.getHours())}:${pad(d.getMinutes())}`; };
+
+  let sorted;
+  if(chartView === 'payload'){
+    sorted = allSorted.slice(-1);
+  } else if(chartView === 'today'){
+    const todayMyt = tsToMytDate(allSorted[allSorted.length-1].timestamp);
+    sorted = allSorted.filter(r=>tsToMytDate(r.timestamp)===todayMyt);
+  } else if(chartView === 'month'){
+    const lm = tsToMytDate(allSorted[allSorted.length-1].timestamp).slice(0,7);
+    sorted = allSorted.filter(r=>tsToMytDate(r.timestamp).slice(0,7)===lm);
+  } else {
+    sorted = allSorted;
+  }
+
+  // Get all readings with their mV values first, then sample
+  const allMvs = sorted.map(r=>{
+    const mv = +(r.batteryMillivolts||0)||nibbleToMv(+(r.batteryLevel||0));
+    return { ts: r.timestamp, mv: (mv >= 1800 && mv <= 4200) ? mv : null };
+  });
+
+  // For 'all' view sample every 4th but only from valid readings to avoid gaps
+  let bSample;
+  if(chartView === 'all'){
+    const valid = allMvs.filter(v=>v.mv!==null);
+    bSample = valid.filter((_,i)=>i%4===0);
+  } else {
+    bSample = allMvs;
+  }
+
+  const bMvs   = bSample.map(v=>v.mv);
+  const bLabels= bSample.map(v=>fmtShort(v.ts));
+  const validMvs = bMvs.filter(v=>v!==null);
+  const latMv   = validMvs[validMvs.length-1]||0;
+  const minMv   = validMvs.length ? Math.min(...validMvs) : 0;
+  const maxMv   = validMvs.length ? Math.max(...validMvs) : 0;
+  const latPct  = mvToPct(latMv);
+  const bCol    = battColor(latPct);
+  const filteredCount = allMvs.filter(v=>v.mv===null).length;
+
+  document.getElementById('batt-trend-stats').innerHTML =
+    `<span class="leg-item" style="color:${bCol};">Latest: <b>${latMv} mV</b></span>`+
+    `<span class="leg-item" style="color:var(--text2);">Min: <b>${minMv} mV</b></span>`+
+    `<span class="leg-item" style="color:var(--text2);">Max: <b>${maxMv} mV</b></span>`+
+    (filteredCount>0?`<span class="leg-item" style="color:#636178;">Invalid filtered: <b>${filteredCount}</b></span>`:'');
+
+  if(C.bt) C.bt.destroy();
+  C.bt = new Chart(document.getElementById('battTrendChart'),{
+    type:'line',
+    data:{
+      labels: bLabels,
+      datasets:[{
+        label:'mV', data:bMvs,
+        borderColor:bCol, backgroundColor:bCol+'22',
+        borderWidth:1.5, pointRadius:chartView==='payload'?4:0,
+        tension:0.3, fill:true, spanGaps:false
+      }]
+    },
+    options:{responsive:true,maintainAspectRatio:false,
+      plugins:{legend:{display:false},tooltip:{callbacks:{label:c=>c.parsed.y===null?'Invalid reading':`${c.parsed.y} mV`}}},
+      scales:{
+        x:{ticks:{...TICK,maxTicksLimit:10,maxRotation:0},grid:GRID},
+        y:{ticks:{...TICK,callback:v=>v+''},grid:GRID,
+           min:validMvs.length?Math.max(1800,minMv-50):1800,
+           max:validMvs.length?maxMv+50:3200}
+      }}
+  });
+
+  const gapHours = sorted.slice(1).map((r,i)=>
+    +((new Date(r.timestamp)-new Date(sorted[i].timestamp))/3600000).toFixed(2)
+  );
+  const missedList = gapHours.filter(h=>h>7);
+  const warn = gapHours.filter(h=>h>7&&h<=18).length;
+  const crit = gapHours.filter(h=>h>18).length;
+
+  document.getElementById('gap-stats').innerHTML =
+    `<span class="leg-item" style="color:var(--text2);">Total TX: <b>${sorted.length}</b></span>`+
+    `<span class="leg-item" style="color:${missedList.length>0?'#e84a4a':'#2ecc8f'};">Missed: <b>${missedList.length}</b></span>`+
+    `<span class="leg-item" style="color:#f0b429;">Warn &gt;7h: <b>${warn}</b></span>`+
+    `<span class="leg-item" style="color:#e84a4a;">Critical &gt;18h: <b>${crit}</b></span>`;
+
+  // Build schedule grid (Option B)
+  const txGrid = document.getElementById('tx-grid');
+  const tsSet  = new Set(sorted.map(r=>r.timestamp));
+
+  if(chartView === 'payload'){
+    // Single payload — show one cell with timestamp
+    const r = sorted[0];
+    const d = new Date(r.timestamp);
+    txGrid.innerHTML = `<div style="display:flex;align-items:center;gap:8px;">
+      <div style="width:32px;height:32px;border-radius:4px;background:rgba(46,204,143,0.7);display:flex;align-items:center;justify-content:center;font-size:9px;color:#fff;font-weight:500;">TX</div>
+      <span style="font-size:11px;color:var(--text2);">${pad(d.getDate())}/${pad(d.getMonth()+1)} ${pad(d.getHours())}:${pad(d.getMinutes())} MYT</span>
+    </div>`;
+
+  } else if(chartView === 'today'){
+    // 24-cell grid — one per hour 00–23
+    const hourSet = new Set(sorted.map(r=>new Date(r.timestamp).getHours()));
+    const cells = Array.from({length:24},(_,h)=>{
+      const has = hourSet.has(h);
+      const col = has ? 'rgba(46,204,143,0.75)' : 'rgba(255,255,255,0.05)';
+      const border = has ? 'none' : '0.5px dashed rgba(232,74,74,0.4)';
+      return `<div title="${pad(h)}:00${has?' — TX received':' — no reading'}" style="height:28px;border-radius:3px;background:${col};border:${border};display:flex;align-items:center;justify-content:center;font-size:8px;font-weight:500;color:${has?'#fff':'rgba(232,74,74,0.5)'};">${has?pad(h):''}</div>`;
+    }).join('');
+    txGrid.innerHTML = `<div style="display:grid;grid-template-columns:repeat(24,1fr);gap:2px;">${cells}</div>
+      <div style="display:flex;justify-content:space-between;font-size:9px;color:var(--text3);margin-top:3px;"><span>00:00</span><span>06:00</span><span>12:00</span><span>18:00</span><span>23:00</span></div>`;
+
+  } else if(chartView === 'month'){
+    // Day cells for the month
+    const daySet = new Set(sorted.map(r=>tsToMytDate(r.timestamp).slice(8)));
+    const lm = tsToMytDate(sorted[sorted.length-1].timestamp).slice(0,7);
+    const daysInMonth = new Date(+lm.slice(0,4), +lm.slice(5,7), 0).getDate();
+    const cells = Array.from({length:daysInMonth},(_,i)=>{
+      const d = String(i+1).padStart(2,'0');
+      const has = daySet.has(d);
+      const col = has ? 'rgba(46,204,143,0.75)' : 'rgba(255,255,255,0.05)';
+      const border = has ? 'none' : '0.5px dashed rgba(232,74,74,0.4)';
+      return `<div title="${d}/${lm.slice(5,7)}${has?' — TX received':' — no reading'}" style="height:28px;border-radius:3px;background:${col};border:${border};display:flex;align-items:center;justify-content:center;font-size:8px;color:${has?'#fff':'rgba(232,74,74,0.4)'};">${has?d:''}</div>`;
+    }).join('');
+    const mn = MON_NAMES[+lm.slice(5,7)-1];
+    txGrid.innerHTML = `<div style="font-size:9px;color:var(--text3);margin-bottom:3px;">${mn} ${lm.slice(0,4)} — one cell per day</div>
+      <div style="display:grid;grid-template-columns:repeat(7,1fr);gap:2px;">${cells}</div>`;
+
+  } else {
+    // All — group by month, show month rows with day cells
+    const monthMap = {};
+    sorted.forEach(r=>{
+      const mKey = tsToMytDate(r.timestamp).slice(0,7);
+      const day  = tsToMytDate(r.timestamp).slice(8);
+      if(!monthMap[mKey]) monthMap[mKey] = new Set();
+      monthMap[mKey].add(day);
+    });
+    const rows = Object.keys(monthMap).sort().map(mKey=>{
+      const daysInMonth = new Date(+mKey.slice(0,4), +mKey.slice(5,7), 0).getDate();
+      const mn = MON_NAMES[+mKey.slice(5,7)-1]+' '+mKey.slice(0,4);
+      const cells = Array.from({length:daysInMonth},(_,i)=>{
+        const d = String(i+1).padStart(2,'0');
+        const has = monthMap[mKey].has(d);
+        const col = has ? 'rgba(46,204,143,0.75)' : 'rgba(255,255,255,0.05)';
+        const border = has ? 'none' : '0.5px dashed rgba(232,74,74,0.3)';
+        return `<div title="${d}/${mKey.slice(5,7)}${has?' — TX received':' — no reading'}" style="height:18px;border-radius:2px;background:${col};border:${border};"></div>`;
+      }).join('');
+      return `<div style="display:flex;align-items:center;gap:6px;margin-bottom:3px;">
+        <span style="font-size:9px;color:var(--text3);min-width:52px;">${mn}</span>
+        <div style="display:grid;grid-template-columns:repeat(${daysInMonth},1fr);gap:1px;flex:1;">${cells}</div>
+      </div>`;
+    }).join('');
+    txGrid.innerHTML = rows;
+  }
+
+  // Legend
+  const legendHtml = `<div style="display:flex;gap:10px;margin-top:5px;font-size:10px;color:var(--text3);">
+    <span style="display:flex;align-items:center;gap:4px;"><span style="width:10px;height:10px;border-radius:2px;background:rgba(46,204,143,0.75);display:inline-block;"></span>Reading received</span>
+    <span style="display:flex;align-items:center;gap:4px;"><span style="width:10px;height:10px;border-radius:2px;border:0.5px dashed rgba(232,74,74,0.5);display:inline-block;"></span>No reading</span>
+  </div>`;
+
+  const gapList = document.getElementById('gap-list');
+  const bigGaps = sorted.slice(1)
+    .map((r,i)=>({from:sorted[i].timestamp,to:r.timestamp,h:gapHours[i]}))
+    .filter(g=>g.h>7)
+    .sort((a,b)=>b.h-a.h)
+    .slice(0,5);
+
+  if(!bigGaps.length){
+    gapList.innerHTML = legendHtml + `<div style="margin-top:5px;color:#2ecc8f;">✓ All readings within expected 6h window</div>`;
+  } else {
+    gapList.innerHTML = legendHtml + bigGaps.map(g=>{
+      const col = g.h>18 ? '#e84a4a' : '#f0b429';
+      const missed = Math.max(1, Math.floor(g.h/6)-1);
+      return `<div style="display:flex;align-items:center;gap:6px;margin-top:3px;">
+        <span style="width:7px;height:7px;border-radius:50%;background:${col};flex-shrink:0;display:inline-block;"></span>
+        <span style="color:${col};">${fmtFull(g.from)} → ${fmtFull(g.to)} &nbsp;<b>${g.h}h gap</b> · ~${missed} missed TX</span>
+      </div>`;
+    }).join('');
+  }
+}
+
+
+function renderSignalChart(){
+  const allSorted = [...rawData].sort((a,b)=>new Date(a.timestamp)-new Date(b.timestamp));
+  const pad = n => String(n).padStart(2,'0');
+
+  let rows;
+  if(chartView === 'payload'){
+    rows = allSorted.slice(-1);
+  } else if(chartView === 'today'){
+    const todayMyt = tsToMytDate(allSorted[allSorted.length-1].timestamp);
+    rows = allSorted.filter(r=>tsToMytDate(r.timestamp)===todayMyt);
+  } else if(chartView === 'month'){
+    const lm = tsToMytDate(allSorted[allSorted.length-1].timestamp).slice(0,7);
+    rows = allSorted.filter(r=>tsToMytDate(r.timestamp).slice(0,7)===lm);
+  } else {
+    rows = allSorted;
+  }
+
+  const fmtLabel = ts => {
+    const d = new Date(ts);
+    if(chartView==='today'||chartView==='payload')
+      return `${pad(d.getDate())}/${pad(d.getMonth()+1)} ${pad(d.getHours())}:${pad(d.getMinutes())}`;
+    return `${d.getDate()}/${d.getMonth()+1}`;
+  };
+
+  const rawVals = rows.map(r=>+(r.minContrast!=null?r.minContrast:65535));
+  const validVals = rawVals.filter(v=>v!==65535);
+  const latVal  = rawVals[rawVals.length-1];
+  const avgVal  = validVals.length ? Math.round(validVals.reduce((s,v)=>s+v,0)/validVals.length) : 0;
+  const minVal  = validVals.length ? Math.min(...validVals) : 0;
+  const noReadCount = rawVals.filter(v=>v===65535).length;
+  const latSi   = SIG.classify(latVal);
+
+  document.getElementById('sig-stats').innerHTML =
+    `<span class="leg-item" style="color:${latSi.hex};">Latest: <b>${latVal===65535?'N/A':latVal} Δlux</b></span>`+
+    `<span class="leg-item" style="color:var(--text2);">Avg: <b>${avgVal} Δlux</b></span>`+
+    `<span class="leg-item" style="color:var(--text2);">Min: <b>${minVal} Δlux</b></span>`+
+    `<span class="leg-item" style="color:#636178;">No-reading (65535): <b>${noReadCount}</b></span>`;
+
+  // Replace 65535 with null so Chart.js draws a gap instead of a spike
+  const chartVals = rawVals.map(v=>v===65535?null:v);
+  const chartColors = rawVals.map(v=>{
+    if(v===65535) return '#636178';
+    return SIG.classify(v).hex;
+  });
+
+  // Cap Y-axis at 800 for readability — extreme outliers distort scale
+  const yMax = Math.min(800, Math.max(250, ...(validVals.length?validVals:[250])));
+
+  if(C.sc) C.sc.destroy();
+  C.sc = new Chart(document.getElementById('sigChart'),{
+    type:'line',
+    data:{
+      labels: rows.map(r=>fmtLabel(r.timestamp)),
+      datasets:[{
+        label:'Δlux', data:chartVals,
+        borderColor:'#4aa3f5',
+        backgroundColor:'rgba(74,163,245,0.08)',
+        borderWidth:1.5, pointRadius:rows.length<20?3:0,
+        pointBackgroundColor:chartColors,
+        tension:0.3, fill:true, spanGaps:false
+      }]
+    },
+    options:{responsive:true,maintainAspectRatio:false,
+      plugins:{legend:{display:false},
+        tooltip:{callbacks:{
+          label:c=>c.parsed.y===null?'No reading this hour':`${c.parsed.y} Δlux — ${SIG.classify(c.parsed.y).label}`
+        }}},
+      scales:{
+        x:{ticks:{...TICK,maxTicksLimit:14,maxRotation:chartView==='all'?0:35},grid:GRID},
+        y:{ticks:{...TICK,callback:v=>v},grid:GRID,
+           min:0, max:yMax,
+           title:{display:true,text:'Δlux',font:{size:9},color:'#636178'}}
+      },
+      plugins:{
+        annotation:{
+          annotations:{
+            strongLine:{type:'line',yMin:200,yMax:200,borderColor:'rgba(46,204,143,0.3)',borderWidth:1,borderDash:[4,4]},
+            goodLine:  {type:'line',yMin:50, yMax:50, borderColor:'rgba(74,163,245,0.3)', borderWidth:1,borderDash:[4,4]},
+            margLine:  {type:'line',yMin:1,  yMax:1,  borderColor:'rgba(240,180,41,0.3)', borderWidth:1,borderDash:[4,4]}
+          }
+        }
+      }
+    }
+  });
+}
+
+
+function renderTimeline(){
+  const legendEl  = document.getElementById('tl-legend');
+  const titleEl   = document.getElementById('tl-title');
+  const T = {...TICK};
+  let datasets, labels, titleText, stacked=false;
+
+  if(chartView === 'payload'){
+    const r = rawData[0];
+    if(!r){ legendEl.innerHTML=''; return; }
+    labels   = CH.names;
+    datasets = [{
+      label:'Channels',
+      data: [
+        +(+(r[CH.keys[0]]||0)).toFixed(4),
+        +(+(r[CH.keys[1]]||0)).toFixed(4),
+        +(+(r[CH.keys[2]]||0)).toFixed(4),
+        +(+(r[CH.keys[3]]||0)).toFixed(4),
+      ],
+      backgroundColor: CH.colorsA,
+      borderColor:     CH.colors,
+      borderWidth:0.5, borderRadius:4,
+    }];
+    legendEl.innerHTML = CH.names.map((h,ci)=>
+      `<span class="leg-item"><span class="leg-sq" style="background:${CH.colors[ci]};"></span>${h}: ${(+(r[CH.keys[ci]]||0)).toFixed(4)} kWh</span>`
+    ).join('');
+    const pad=n=>String(n).padStart(2,'0');
+    const d=new Date(r.timestamp);
+    titleText=`Latest payload — ${pad(d.getDate())}/${pad(d.getMonth()+1)}/${d.getFullYear()} ${pad(d.getHours())}:${pad(d.getMinutes())} · 4 channels`;
+    stacked=false;
+
+  } else if(chartView === 'today'){
+    const todayMyt = tsToMytDate(rawData[0].timestamp);
+    const todayRows = rawData.filter(r=>tsToMytDate(r.timestamp)===todayMyt)
+                             .sort((a,b)=>new Date(a.timestamp)-new Date(b.timestamp));
+    labels   = todayRows.map(r=>{ const d=new Date(r.timestamp); return `${String(d.getHours()).padStart(2,'0')}:${String(d.getMinutes()).padStart(2,'0')}`; });
+    const data = todayRows.map(r=>+(CH.keys.reduce((s,k)=>s+(+(r[k]||0)),0)).toFixed(4));
+    datasets = [{
+      label:'kWh',data,
+      backgroundColor:'#4aa3f5bb',borderColor:'#4aa3f5',
+      borderWidth:0.5,borderRadius:2,
+    }];
+    legendEl.innerHTML=`<span class="leg-item"><span class="leg-sq" style="background:#4aa3f5;"></span>Total kWh per reading</span>`;
+    titleText=`Today — ${todayMyt} · ${todayRows.length} readings`;
+    stacked=false;
+
+  } else if(chartView === 'month'){
+    const latestMytDate = tsToMytDate(rawData[0].timestamp);
+    const [lyear, lmon] = latestMytDate.split('-').map(Number);
+    const monthRows = rawData.filter(r=>{
+      const d = tsToMytDate(r.timestamp).split('-').map(Number);
+      return d[0]===lyear && d[1]===lmon;
+    });
+    const dayMap = {};
+    monthRows.forEach(r=>{
+      const k = tsToMytDate(r.timestamp);
+      if(!dayMap[k]) dayMap[k]=0;
+      dayMap[k] += CH.keys.reduce((s,key)=>s+(+(r[key]||0)),0);
+    });
+    const sortedKeys = Object.keys(dayMap).sort();
+    labels  = sortedKeys.map(k=>{ const p=k.split('-'); return `${p[2]}/${p[1]}`; });
+    datasets=[{
+      label:'kWh',data:sortedKeys.map(k=>+dayMap[k].toFixed(3)),
+      backgroundColor:'#4aa3f5bb',borderColor:'#4aa3f5',
+      borderWidth:0.5,borderRadius:3,
+    }];
+    legendEl.innerHTML=`<span class="leg-item"><span class="leg-sq" style="background:#4aa3f5;"></span>Total kWh per day</span>`;
+    const mn=MON_NAMES[lmon-1];
+    titleText=`Latest month — ${mn} ${lyear} · ${monthRows.length} readings · by day`;
+    stacked=false;
+
+  } else {
+    const mm={};
+    rawData.forEach(r=>{
+      const k=fmtMKey(r.timestamp);
+      if(!mm[k])mm[k]=0;
+      mm[k]+=CH.keys.reduce((s,key)=>s+(+(r[key]||0)),0);
+    });
+    const keys=Object.keys(mm).sort();
+    labels  = keys.map(fmtMLbl);
+    datasets=[{
+      label:'kWh',data:keys.map(k=>+mm[k].toFixed(2)),
+      backgroundColor:'#4aa3f5bb',borderColor:'#4aa3f5',
+      borderWidth:0.5,borderRadius:5,
+    }];
+    legendEl.innerHTML=`<span class="leg-item"><span class="leg-sq" style="background:#4aa3f5;"></span>Total kWh per month</span>`;
+    titleText=`All data — ${rawData.length} readings · grouped by month`;
+    stacked=false;
+  }
+
+  if(titleEl) titleEl.textContent=titleText;
+  if(C.tl) C.tl.destroy();
+  C.tl = new Chart(document.getElementById('timelineChart'),{
+    type:'bar', data:{labels, datasets},
+    options:{responsive:true, maintainAspectRatio:false,
+      plugins:{legend:{display:false},
+        tooltip:{mode:'index',intersect:false,
+          callbacks:{label:c=>`${c.dataset.label||c.label}: ${c.parsed.y.toFixed(chartView==='payload'?4:3)} kWh`}}},
+      scales:{
+        x:{stacked,ticks:{...T,maxTicksLimit:chartView==='payload'?4:22,maxRotation:chartView==='payload'?0:35},grid:GRID},
+        y:{stacked,ticks:{...T,callback:v=>v>=1000?(v/1000).toFixed(1)+'K':v.toFixed(chartView==='payload'?3:2)},grid:GRID,
+           title:{display:true,text:'kWh',font:{size:9},color:'#636178'}}
+      }}
+  });
+}
+function fmtDT2(ts){
+  if(!ts) return '<div class="dt-cell"><span class="dt-date">—</span></div>';
+  const d=new Date(ts);
+  const pad=n=>String(n).padStart(2,'0');
+  const date=`${pad(d.getDate())}/${pad(d.getMonth()+1)}/${d.getFullYear()}`;
+  const time=`${pad(d.getHours())}:${pad(d.getMinutes())}:${pad(d.getSeconds())}`;
+  return `<div class="dt-cell"><span class="dt-date">${date}</span><span class="dt-time">${time}</span></div>`;
+}
+function fmtRange(startTs, endTs){
+  if(!startTs) return '<div class="tr-cell"><span class="tr-start">—</span></div>';
+  const s=new Date(startTs), e=new Date(endTs||startTs);
+  const pad=n=>String(n).padStart(2,'0');
+  const sDate=`${pad(s.getDate())}/${pad(s.getMonth()+1)}`;
+  const eDate=`${pad(e.getDate())}/${pad(e.getMonth()+1)}`;
+  const sTime=`${pad(s.getHours())}:${pad(s.getMinutes())}`;
+  const eTime=`${pad(e.getHours())}:${pad(e.getMinutes())}`;
+  const startFull = sDate===eDate ? sTime : `${sDate} ${sTime}`;
+  const endFull   = `${eDate} ${eTime}`;
+  return `<div class="tr-cell"><span class="tr-start">${startFull}</span><span class="tr-end"><span class="tr-arr">→</span>${endFull}</span></div>`;
+}
+
+/*═══════════════════════════════════════════════════════
+  TABLE RENDER
+═══════════════════════════════════════════════════════*/
+function hTag(h){
+  const i=CH.names.indexOf(h)+1;
+  return `<span class="h-tag h${i}">${h}</span>`;
+}
+
+function renderTable(){
+  const hf   = document.getElementById('h-filter').value;
+  const rowN = parseInt(document.getElementById('rows-filter').value);
+  const sort = document.getElementById('sort-filter').value;
+  let all    = hf==='all' ? [...intervals] : intervals.filter(r=>r.h===hf);
+  if(sort === 'oldest'){
+    all.sort((a,b) => new Date(a.timestamp) - new Date(b.timestamp));
+  } else {
+    all.sort((a,b) => new Date(b.timestamp) - new Date(a.timestamp));
+  }
+
+  const rows = all.slice(0, rowN);
+  const tP   = all.reduce((s,r)=>s+r.pulse, 0);
+  const tK   = all.reduce((s,r)=>s+r.kwh,   0);
+
+  document.getElementById('tbl-body').innerHTML = rows.map(r => {
+    const ci = CH.names.indexOf(r.h)+1;
+    const rate = r.rawPulseRate || PULSE_RATE;
+    return `<tr class="rh${ci}">
+      <td>${fmtDT2(r.timestamp)}</td>
+      <td>${r.nextTimestamp ? fmtDT2(r.nextTimestamp) : '<span style="color:var(--text3);font-size:10px;">—</span>'}</td>
+      <td>${fmtRange(r.hStart, r.hEnd)}</td>
+      <td>${fmtDT2(r.hEnd)}</td>
+      <td>${hTag(r.h)}</td>
+      <td class="mono">${r.kwh.toFixed(4)}</td>
+      <td class="mono">${r.instKW.toFixed(3)}</td>
+      <td class="mono">${r.pulse.toLocaleString()}</td>
+      <td class="mono" style="color:var(--text3);">${r.index}</td>
+      <td class="mono">${r.duration}</td>
+      <td class="mono">${r.durMin.toFixed(2)}</td>
+      <td class="mono" style="color:var(--text2);">${rate.toLocaleString()} <span style="font-size:9px;color:var(--text3);">imp/kWh</span></td>
+      <td class="mono" style="color:${r.flags>0?'#f0b429':'var(--text3)'};" title="Raw flags value from API status byte lower nibble">${r.flags} <span style="font-size:9px;color:var(--text3);">0x${r.flags.toString(16).toUpperCase().padStart(2,'0')}</span></td>
+      <td><span class="sig-badge ${r.sigCls}">${r.sigVal===65535?'N/A':r.sigVal} (${r.sigLabel})</span></td>
+    </tr>`;
+  }).join('') +
+  `<tr class="total-row">
+    <td colspan="5" style="font-size:11px;">Total</td>
+    <td class="mono">${tK.toFixed(3)}</td>
+    <td>—</td>
+    <td class="mono">${tP.toLocaleString()}</td>
+    <td colspan="6"></td>
+  </tr>`;
+}
+
+/*═══════════════════════════════════════════════════════
+  EXPORT CSV
+═══════════════════════════════════════════════════════*/
+function exportCSV(){
+  const hf   = document.getElementById('h-filter').value;
+  const rows = hf==='all' ? intervals : intervals.filter(r=>r.h===hf);
+  const hdr  = ['data.timestamp','NextTimestamp','H_Timestamp_Start','H_Timestamp_End',
+                 'H','H_Value_KWh','Inst_kW','H_Value_Pulse','Index','Duration',
+                 'H_Dur_Min','Pulse_Rate','Flags','Signal_Quality','Signal_Class'];
+  const csv  = [hdr.join(','), ...rows.map(r=>[
+    fmtDT(r.timestamp), r.nextTimestamp?fmtDT(r.nextTimestamp):'',
+    fmtDT(r.hStart), fmtDT(r.hEnd), r.h,
+    r.kwh, r.instKW, r.pulse, r.index, r.duration, r.durMin,
+    r.rawPulseRate||PULSE_RATE, r.flags, r.sigVal, r.sigLabel
+  ].join(','))].join('\n');
+  const a = document.createElement('a');
+  a.href = 'data:text/csv;charset=utf-8,' + encodeURIComponent(csv);
+  a.download = 'CTS_GSM_EnergyData.csv';
+  a.click();
+}
+
+/*═══════════════════════════════════════════════════════
+  EXPORT & PRINT
+═══════════════════════════════════════════════════════*/
+function toggleExportMenu(e){
+  e.stopPropagation();
+  document.getElementById('export-menu').classList.toggle('open');
+}
+function closeExportMenu(){ document.getElementById('export-menu').classList.remove('open'); }
+document.addEventListener('click', closeExportMenu);
+
+function printDashboard(){
+  const sel = document.getElementById('rows-filter');
+  const prev = sel.value;
+  sel.value = '200';
+  renderTable();
+  setTimeout(()=>{
+    window.print();
+    setTimeout(()=>{ sel.value = prev; renderTable(); }, 500);
+  }, 100);
+}
+
+/*═══════════════════════════════════════════════════════
+  FILTER BADGE
+═══════════════════════════════════════════════════════*/
+function updateFilterBadge(from, to){
+  const badge = document.getElementById('filter-badge');
+  const text  = document.getElementById('filter-badge-text');
+  if(!from || !to){ badge.classList.remove('active'); return; }
+  const n = rawDataFiltered.length;
+  const earliest = n ? tsToMytDate(rawDataFiltered[rawDataFiltered.length-1].timestamp) : from;
+  const latest   = n ? tsToMytDate(rawDataFiltered[0].timestamp) : to;
+  text.textContent = `Showing ${earliest} → ${latest} · ${n} readings (MYT)`;
+  badge.classList.toggle('active', n > 0);
+}
+function clearFilter(){
+  if(!allRawData.length) return;
+  const allFrom = tsToMytDate(allRawData[allRawData.length-1].timestamp);
+  const allTo   = tsToMytDate(allRawData[0].timestamp);
+  document.getElementById('d-from').value = allFrom;
+  document.getElementById('d-to').value   = allTo;
+  applyDates();
+}
+
+/*═══════════════════════════════════════════════════════
+  FETCH & RENDER
+  allRawData     = full API response (cached after first fetch)
+  rawDataFiltered= client-side slice by date picker (MYT-aware)
+
+  The API timestamps are UTC ISO strings e.g. "2026-04-23T05:45:00Z"
+  The date picker gives YYYY-MM-DD in the USER's local date.
+  We treat the picker dates as MYT (UTC+8) day boundaries so that
+  selecting "23/04/2026" captures all readings within that MYT calendar day.
+═══════════════════════════════════════════════════════*/
+let allRawData = [];
+let rawDataFiltered = [];
+const MYT_OFFSET_MS = 8 * 60 * 60 * 1000;
+
+function pickerToMytStart(dateStr){
+
+  return new Date(dateStr + 'T00:00:00+08:00').getTime();
+}
+function pickerToMytEnd(dateStr){
+  return new Date(dateStr + 'T23:59:59+08:00').getTime();
+}
+function tsToMytDate(ts){
+  const d = new Date(new Date(ts).getTime() + MYT_OFFSET_MS);
+  return d.toISOString().slice(0,10);
+}
+
+function applyFilter(from, to){
+  // Compare data.timestamp (UTC) converted to MYT date string directly against picker values
+  // e.g. "2026-04-23T05:45:00Z" → MYT "2026-04-23" compared to picker "2026-04-23"
+  rawDataFiltered = allRawData.filter(r => {
+    const mytDate = tsToMytDate(r.timestamp); // "YYYY-MM-DD" in MYT
+    return mytDate >= from && mytDate <= to;
+  });
+
+  rawData   = rawDataFiltered.slice();
+  intervals = buildIntervals(rawData);
+
+  chartView = 'all';
+  document.querySelectorAll('#chart-pills .tl-pill').forEach(p=>p.classList.toggle('active',p.dataset.view==='all'));
+
+  document.getElementById('main').style.display = 'block';
+  updateFilterBadge(from, to);
+
+  requestAnimationFrame(()=>{
+    renderKPIs(); renderDiag(); renderHealthBanner();
+    renderBatteryGaps();
+    renderSignalChart(); renderTimeline(); renderTable();
+  });
+}
+
+async function fetchAndRender(fromInit, toInit){
+  let from = fromInit, to = toInit;
+  document.getElementById('loading').style.display = 'block';
+  document.getElementById('main').style.display    = 'none';
+  document.getElementById('err-box').style.display = 'none';
+  document.getElementById('filter-badge').classList.remove('active');
+  try{
+
+    const apiFrom = new Date(pickerToMytStart(from) - 86400000).toISOString();
+    const apiTo   = new Date(pickerToMytEnd(to)     + 86400000).toISOString();
+    const resp = await fetch(`${API_BASE}?from=${apiFrom}&to=${apiTo}`,
+      { headers:{'X-API-Key':API_KEY} });
+    if(!resp.ok) throw new Error('HTTP '+resp.status+' — '+resp.statusText);
+    const json = await resp.json();
+    allRawData = (json.data||[]).sort((a,b)=>new Date(b.timestamp)-new Date(a.timestamp));
+    if(!allRawData.length) throw new Error('No data returned from API.');
+    const addrEl = document.getElementById('dev-address');
+    if(addrEl.style.display === 'none' || !addrEl.textContent){
+      const addr = json.address || json.location || json.siteAddress ||
+                   json.installAddress || json.deviceAddress ||
+                   (json.metadata && (json.metadata.address||json.metadata.location));
+      if(addr){
+        addrEl.textContent = '📍 '+addr;
+        addrEl.style.display = 'inline-block';
+        addrEl.title = addr;
+      } else if(json.partnerId){
+        const label = [json.partnerId, json.deviceId].filter(Boolean).join(' · ');
+        addrEl.textContent = label;
+        addrEl.style.display = 'inline-block';
+      }
+    }
+    if(allRawData.length){
+      const dataFrom = tsToMytDate(allRawData[allRawData.length-1].timestamp);
+      const dataTo   = tsToMytDate(allRawData[0].timestamp);
+      document.getElementById('d-from').value = dataFrom;
+      document.getElementById('d-to').value   = dataTo;
+      from = dataFrom;
+      to   = dataTo;
+    }
+
+    applyFilter(from, to);
+    document.getElementById('loading').style.display = 'none';
+  } catch(e){
+    document.getElementById('loading').style.display = 'none';
+    const eb = document.getElementById('err-box');
+    eb.style.display = 'block';
+    eb.textContent   = 'Could not load data: '+e.message+
+      '. Check endpoint/key and ensure CORS allows browser access.';
+  }
+}
+
+function applyDates(){
+  const from = document.getElementById('d-from').value;
+  const to   = document.getElementById('d-to').value;
+  if(!from || !to) return;
+
+  if(allRawData.length){
+    // Count using same MYT date string comparison as applyFilter
+    const count = allRawData.filter(r=>{
+      const d = tsToMytDate(r.timestamp);
+      return d >= from && d <= to;
+    }).length;
+
+    if(!count){
+      const eb = document.getElementById('err-box');
+      eb.style.display = 'block';
+      eb.textContent   = `No readings found for ${from} → ${to} (MYT). `+
+        `Data available: ${tsToMytDate(allRawData[allRawData.length-1].timestamp)} `+
+        `to ${tsToMytDate(allRawData[0].timestamp)}.`;
+      return;
+    }
+    document.getElementById('err-box').style.display = 'none';
+    applyFilter(from, to);
+    return;
+  }
+  fetchAndRender(from, to);
+}
+
+/*═══════════════════════════════════════════════════════
+  PRINTABLE REPORT
+═══════════════════════════════════════════════════════*/
+let _lastReportHtml = '';
+
+function openReport(){
+  const latest  = rawData[0]||{};
+  const fromMyt = rawData.length?tsToMytDate(rawData[rawData.length-1].timestamp):'-';
+  const toMyt   = rawData.length?tsToMytDate(rawData[0].timestamp):'-';
+  const period  = fromMyt===toMyt?fromMyt:`${fromMyt} → ${toMyt}`;
+  const days    = rawData.length?Math.max(1,Math.round((new Date(rawData[0].timestamp)-new Date(rawData[rawData.length-1].timestamp))/86400000)):1;
+  const tKwh    = intervals.reduce((s,r)=>s+r.kwh,0);
+  const battMv  = +(latest.batteryMillivolts||0)||nibbleToMv(+(latest.batteryLevel||0));
+  const battPct = mvToPct(battMv);
+  const contrast= +(latest.minContrast!=null?latest.minContrast:65535);
+  const sigInfo = SIG.classify(contrast);
+  const failCnt = +(latest.consecutiveFailCount||0);
+  const recal   = +(latest.recalCount||0);
+  const zero    = +(latest.zeroBucketCount||0);
+  const sas     = +(latest.sasRenewCount||0);
+  const reset   = decodeReset(+(latest.resetReason||0));
+  const sorted  = [...rawData].sort((a,b)=>new Date(a.timestamp)-new Date(b.timestamp));
+  const gaps    = sorted.slice(1).map((r,i)=>+((new Date(r.timestamp)-new Date(sorted[i].timestamp))/3600000).toFixed(1));
+  const maxGap  = gaps.length?Math.max(...gaps):0;
+  const missed  = gaps.filter(h=>h>7).length;
+  const drain   = days>1&&rawData.length>1?(+(rawData[rawData.length-1].batteryMillivolts||0)||nibbleToMv(+(rawData[rawData.length-1].batteryLevel||0))):null;
+  const drainRate = drain&&drain>battMv?((drain-battMv)/days).toFixed(2):null;
+  const daysLeft  = drainRate&&+drainRate>0?Math.round((battMv-1800)/+drainRate):null;
+
+  // Peak/off-peak (MY hours as default since most installs are MY)
+  let peakKwh=0, offKwh=0;
+  rawData.forEach(r=>{
+    const h=new Date(r.timestamp).getHours();
+    const isSun=new Date(r.timestamp).getDay()===0;
+    const kwh=CH.keys.reduce((s,k)=>s+(+(r[k]||0)),0);
+    if(h>=8&&h<22&&!isSun) peakKwh+=kwh; else offKwh+=kwh;
+  });
+  peakKwh=+peakKwh.toFixed(2); offKwh=+offKwh.toFixed(2);
+
+  // Per channel totals
+  const chTotals = CH.keys.map(k=>rawData.reduce((s,r)=>s+(+(r[k]||0)),0).toFixed(2));
+
+  // Signal stability — must be before issues list
+  const totalBuckets = rawData.length * 12;
+  const totalMissed  = rawData.reduce((s,r)=>s+(+(r.zeroBucketCount||0)),0);
+  const sigAccuracy  = totalBuckets>0?((totalBuckets-totalMissed)/totalBuckets*100).toFixed(2):'100.00';
+  const estLostKwh   = (totalMissed/(+(latest.pulseRate||1000))).toFixed(3);
+
+  const now = new Date();
+  const printDate = `${now.getDate()}/${now.getMonth()+1}/${now.getFullYear()} ${String(now.getHours()).padStart(2,'0')}:${String(now.getMinutes()).padStart(2,'0')}`;
+
+  // Issues list
+  const issues=[];
+  if(zero>0 && recal>100) issues.push({level:'critical',msg:`Unstable signal causing lost kWh — zeroBucketCount: ${zero} · recalCount: ${recal} (elevated). Sensor recalibrating too often, missing pulses during recal windows. Check ambient light interference near sensor enclosure.`});
+  else if(zero>0 && contrast<50 && contrast!==65535) issues.push({level:'critical',msg:`Weak signal causing lost kWh — zeroBucketCount: ${zero} · minContrast: ${contrast} Δlux. Signal too weak during recalibration causing missed pulses. Clean sensor lens and check alignment.`});
+  else if(zero>0) issues.push({level:'critical',msg:`Lost pulses detected — zeroBucketCount: ${zero} · accuracy: ${sigAccuracy}% · ~${estLostKwh} kWh unrecorded. Check sensor stability and ambient light.`});
+  if(failCnt>3) issues.push({level:'critical',msg:`TX backoff active — consecutiveFailCount: ${failCnt}. Device is skipping transmissions. Check GSM coverage at install location.`});
+  if(recal>100 && zero===0) issues.push({level:'warning',msg:`Frequent OPT3001 recalibration — recalCount: ${recal} (normal <100). Ambient light is unstable near sensor. Risk of missed pulses during recal windows. Check for flickering lights or direct sunlight on enclosure.`});
+  if(contrast<50&&contrast!==65535&&zero===0) issues.push({level:'warning',msg:`Marginal LED signal — minContrast: ${contrast} Δlux (good threshold: ≥50). Currently detecting but at risk. Clean sensor lens and verify angle toward meter LED.`});
+  if(battPct<30) issues.push({level:'critical',msg:`Battery low — ${battMv}mV (${battPct}%). Replace 2×D cell batteries soon.`});
+  if(missed>0) issues.push({level:'warning',msg:`${missed} transmission gap(s) detected. Worst: ${maxGap.toFixed(1)}h (expected ≤6h). Check GSM network coverage.`});
+  if(recal>100 && contrast<50 && contrast!==65535 && zero===0) issues.push({level:'warning',msg:`High pulse loss risk — frequent recalibration AND marginal signal simultaneously. Act now before zeroBucketCount starts accumulating.`});
+
+  const issueRows = issues.length
+    ? issues.map(i=>`<tr><td style="padding:6px 8px;color:${i.level==='critical'?'#c0392b':'#e67e22'};">●</td><td style="padding:6px 8px;">${i.msg}</td></tr>`).join('')
+    : `<tr><td colspan="2" style="padding:6px 8px;color:#27ae60;">✓ No issues detected</td></tr>`;
+
+  const html = `<!DOCTYPE html><html><head><meta charset="utf-8">
+  <style>
+    *{box-sizing:border-box;margin:0;padding:0;}
+    body{font-family:Arial,sans-serif;font-size:13px;color:#111;padding:32px 36px;line-height:1.6;background:#fff;}
+    .rpt-header{border-bottom:2px solid #1a6ef5;padding-bottom:12px;margin-bottom:22px;display:flex;justify-content:space-between;align-items:flex-start;}
+    .rpt-title{font-size:20px;font-weight:700;color:#1a6ef5;margin-bottom:3px;}
+    .rpt-sub{font-size:12px;color:#666;}
+    .rpt-meta{text-align:right;font-size:12px;color:#555;line-height:1.8;}
+    h2{font-size:13px;font-weight:700;color:#1a6ef5;border-left:3px solid #1a6ef5;padding-left:9px;margin:18px 0 8px;text-transform:uppercase;letter-spacing:.04em;}
+    table{width:100%;border-collapse:collapse;margin-bottom:4px;}
+    td{padding:6px 10px;font-size:13px;vertical-align:middle;}
+    td:first-child{width:40%;font-weight:600;color:#444;}
+    td:last-child{width:60%;color:#111;}
+    tr:nth-child(even) td{background:#f5f7fa;}
+    .issues td{vertical-align:top;padding:5px 8px;}
+    img{max-width:100%;height:auto;display:block;page-break-inside:avoid;}
+    .footer{margin-top:24px;padding-top:10px;border-top:1px solid #ddd;font-size:11px;color:#aaa;text-align:center;}
+    @media print{
+      *{-webkit-print-color-adjust:exact;print-color-adjust:exact;}
+      body{padding:10mm;margin:0;}
+      h2{page-break-after:avoid;}
+      table{page-break-inside:avoid;}
+      img{page-break-inside:avoid;max-width:100%!important;}
+      @page{margin:10mm;size:A4;}
+    }
+  </style></head><body>
+  <div class="rpt-header">
+    <div>
+      <div class="rpt-title">CTS EnergyEye — Device Report</div>
+      <div class="rpt-sub">Device: <b>${DEVICE_ID||'energyeye-001'}</b> &nbsp;·&nbsp; Generated: ${printDate}</div>
+    </div>
+    <div class="rpt-meta">
+      Period: <b>${period}</b><br>
+      ${days} day${days!==1?'s':''} &nbsp;·&nbsp; ${rawData.length} readings
+    </div>
+  </div>
+
+  <h2>⚡ Energy Consumption</h2>
+  <table>
+    <tr><td>Total kWh</td><td><b>${tKwh.toLocaleString('en-MY',{minimumFractionDigits:2,maximumFractionDigits:2})} kWh</b></td></tr>
+    <tr><td>Daily Average</td><td>${(tKwh/days).toFixed(2)} kWh/day</td></tr>
+    <tr><td>Peak (08:00–22:00 excl. Sun)</td><td>${peakKwh} kWh &nbsp;(${tKwh>0?(peakKwh/tKwh*100).toFixed(1):0}%)</td></tr>
+    <tr><td>Off-Peak</td><td>${offKwh} kWh &nbsp;(${tKwh>0?(offKwh/tKwh*100).toFixed(1):0}%)</td></tr>
+    <tr><td>Pulse Rate</td><td>${+(latest.pulseRate||1000)} imp/kWh</td></tr>
+    <tr><td>Channel Breakdown</td><td>H01: ${chTotals[0]} &nbsp;H02: ${chTotals[1]} &nbsp;H03: ${chTotals[2]} &nbsp;H04: ${chTotals[3]} kWh</td></tr>
+  </table>
+
+  <h2>🔋 Battery Status</h2>
+  <table>
+    <tr><td>Voltage</td><td><b style="color:${battPct>=60?'#27ae60':battPct>=30?'#e67e22':'#c0392b'};">${battMv} mV (${battPct}%)</b></td></tr>
+    <tr><td>Nibble</td><td>${+(latest.batteryLevel||0)}/15 · ${latest.batteryMillivolts?'exact reading':'estimated from nibble'}</td></tr>
+    <tr><td>Drain Rate</td><td>${drainRate?`~${drainRate} mV/day`:'Negligible / stable'}</td></tr>
+    <tr><td>Est. Remaining Life</td><td>${daysLeft?`~${daysLeft} days`:'Insufficient data'}</td></tr>
+  </table>
+
+  <h2>🔵 Meter LED Signal (OPT3001)</h2>
+  <table>
+    <tr><td>minContrast</td><td><b style="color:${contrast===65535?'#888':contrast<50?'#e67e22':contrast<200?'#2980b9':'#27ae60'};">${contrast===65535?'N/A (no reading)':contrast+' Δlux'}</b> &nbsp;— ${sigInfo.label}</td></tr>
+    <tr><td>Missed Pulses</td><td style="color:${zero>0?'#c0392b':'#27ae60'};">${zero>0?`⚠ ${zero} buckets missed`:'✓ None'}</td></tr>
+    <tr><td>Recalibrations</td><td style="color:${recal>100?'#e67e22':'inherit'};">${recal} ${recal>100?'(elevated)':'(normal)'}</td></tr>
+  </table>
+
+  <h2>📡 Transmission</h2>
+  <table>
+    <tr><td>Total Readings</td><td>${rawData.length} (expected ~${days*4})</td></tr>
+    <tr><td>Missed TX (gaps >7h)</td><td style="color:${missed>0?'#c0392b':'#27ae60'};">${missed>0?`⚠ ${missed} gap(s) · worst: ${maxGap.toFixed(1)}h`:'✓ None'}</td></tr>
+    <tr><td>Consecutive Fail Count</td><td style="color:${failCnt>3?'#c0392b':'inherit'};">${failCnt}${failCnt>3?' (backoff active)':''}</td></tr>
+    <tr><td>SAS Renewals</td><td>${sas}</td></tr>
+    <tr><td>Last Reset Reason</td><td>${reset}</td></tr>
+    <tr><td>Payload Version</td><td>V${+(latest.version||3)} · ${+(latest.bucketCount||4)} active channels · flags: ${+(latest.flags||0)}</td></tr>
+  </table>
+
+  <h2>📊 Signal Stability &amp; Pulse Accuracy</h2>
+  <table>
+    <tr><td>Total Buckets (period)</td><td>${totalBuckets.toLocaleString()} (${rawData.length} readings × 12 buckets/hr)</td></tr>
+    <tr><td>Missed Buckets (zeroBucketCount sum)</td><td style="color:${totalMissed>0?'#c0392b':'#27ae60'};">${totalMissed>0?'⚠ '+totalMissed+' buckets missed':'✓ 0 — no missed buckets'}</td></tr>
+    <tr><td>Pulse Accuracy</td><td><b style="color:${+sigAccuracy>=99.9?'#27ae60':+sigAccuracy>=99?'#e67e22':'#c0392b'};">${sigAccuracy}%</b></td></tr>
+    <tr><td>Est. Unrecorded Energy</td><td style="color:${totalMissed>0?'#c0392b':'#27ae60'};">${totalMissed>0?'~'+estLostKwh+' kWh unrecorded':'0 kWh — all pulses captured'}</td></tr>
+    <tr><td>OPT3001 Recalibrations (latest)</td><td style="color:${recal>100?'#e67e22':'inherit'};">${recal} ${recal>100?'(elevated — check ambient light)':'(normal)'}</td></tr>
+    <tr><td>minContrast (latest)</td><td style="color:${contrast===65535?'#888':contrast<50?'#e67e22':contrast<200?'#2980b9':'#27ae60'};">${contrast===65535?'N/A':contrast+' Δlux'} — ${sigInfo.label}</td></tr>
+  </table>
+  <p style="font-size:11px;color:#888;margin:4px 0 0;font-style:italic;">Based on TeraTerm LP-WIN analysis: pulses are missed when OPT3001 recalibrates during active meter LED flashing. zeroBucketCount accumulates these losses.</p>
+
+  <h2>⚠ Issues &amp; Recommendations</h2>
+  <table class="issues">${issueRows}</table>
+
+  <div class="footer">CTS EnergyEye Dashboard · ${printDate} · Period: ${period}</div>
+  </body></html>`;
+
+  // Capture chart images at report generation time
+  const chartImgs = {};
+  // Charts intentionally excluded from report - clean data tables only
+
+  const chartSection = ''; // No charts in report
+
+  _lastReportHtml = html;
+
+  const frame = document.getElementById('report-frame');
+  frame.srcdoc = _lastReportHtml;
+
+  document.getElementById('report-modal').style.display='block';
+  document.body.style.overflow='hidden';
+}
+
+function printReport(){
+  if(!_lastReportHtml) return;
+  const frame = document.getElementById('report-frame');
+  // Wait for srcdoc to fully load then print
+  frame.onload = () => {
+    frame.contentWindow.focus();
+    frame.contentWindow.print();
+    frame.onload = null;
+  };
+  // Re-set srcdoc to trigger onload
+  frame.srcdoc = _lastReportHtml;
+}
+
+function closeReport(){
+  document.getElementById('report-modal').style.display='none';
+  document.body.style.overflow='';
+}
+
+document.getElementById('h-filter').addEventListener('change',    renderTable);
+document.getElementById('sort-filter').addEventListener('change',  renderTable);
+document.getElementById('rows-filter').addEventListener('change',  renderTable);
+</script>
+</body>
+</html>
