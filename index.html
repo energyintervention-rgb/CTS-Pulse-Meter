@@ -421,7 +421,7 @@ tr.rh4{border-left:2.5px solid var(--ch4);}
   <div class="header">
     <div class="hdr-left">
       <span class="hdr-title">CTS GSM Energy Dashboard</span>
-      <span class="dev-tag" id="hdr-dev">energyeye-001</span>
+      <span class="dev-tag" id="hdr-dev"></span>
       <span class="hdr-status"><span class="live-dot"></span><span id="data-range">Loading…</span></span>
     </div>
     <div class="hdr-right">
@@ -761,7 +761,7 @@ function doLogout(){
   document.getElementById('login-overlay').style.display = 'flex';
 }
 
-// Auto-fill saved credentials on page load
+// Auto-fill saved credentials on page load and auto-login if Remember Me was set
 (function(){
   if(localStorage.getItem('cts_rem')==='1'){
     const ep  = localStorage.getItem('cts_ep')||'';
@@ -772,6 +772,14 @@ function doLogout(){
       document.getElementById('auth-dev').value = dev;
       document.getElementById('auth-key').value = key;
       document.getElementById('remember-me').checked = true;
+      // Auto-login with saved credentials
+      API_BASE  = `${ep.replace(/\/+$/,'')}/api/v1/devices/${dev}/data`;
+      API_KEY   = key;
+      DEVICE_ID = dev;
+      document.getElementById('hdr-dev').textContent = dev;
+      document.getElementById('login-overlay').style.display = 'none';
+      fetchDeviceAddress();
+      fetchAndRender('2020-01-01','2099-12-31');
     }
   }
 })();
@@ -1753,10 +1761,12 @@ async function fetchAndRender(fromInit, toInit){
     document.getElementById('loading').style.display = 'none';
   } catch(e){
     document.getElementById('loading').style.display = 'none';
-    const eb = document.getElementById('err-box');
-    eb.style.display = 'block';
-    eb.textContent   = 'Could not load data: '+e.message+
-      '. Check endpoint/key and ensure CORS allows browser access.';
+    // If fetch fails, clear saved credentials and show login screen
+    API_BASE=''; API_KEY=''; DEVICE_ID='';
+    ['cts_ep','cts_dev','cts_key','cts_rem'].forEach(k=>localStorage.removeItem(k));
+    document.getElementById('login-overlay').style.display = 'flex';
+    document.getElementById('remember-me').checked = false;
+    showLoginErr('Could not connect: '+e.message+'. Please check your endpoint and key.');
   }
 }
 
